@@ -173,19 +173,34 @@ up with a definition and links to external resources for a more in depth analysi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Product Ownership}
 
-We have decided to divvy up the group in such a way that each function is claimed by a
-particular team member. In this way, we allow for easy traceability for the future reference
-and to determine accountability. When the customer is in need of finding the ``go to'' person for
-a specific function of the project, this will be the person to consult. Of course, this
-is not to say that each team member works in a vacuum. As each person's particular skills vary,
-one may contract out some part of his own function to another team member. In fact, as many
-functions will likely interface with one another, it will almost certainly be required for some
-cross-functional cooperation. However, it is important for the person with ownership to be very
-particular about the design and understanding of his function.
+Do to the inexperience on the overall team, the responsibilities will be broken down into teams of two.
+Teams will be cross pollinated so that no two man team is responsible for two different aspects of the
+project. Every two man team will have a lead, who will act as the point of contact (POC) for the that
+teams responsibilities. Unit and integration testing will be the responsibility of each individual team.
+Every team member will be provided with a virtual image of the deployment enviornment in order to ensure
+that their changes interoperate with the most recent build of the application.
 
-Each person is responsible for unit testing his own projects.
+\section{Technical Lead}
+
+David Patrzeba will be acting as technical lead for the entire project. While in this role he will be
+responsible in advising all the teams in options available to them, possible solutions, and ensuring
+that functionality is interoperable.
+
+\section{Infrastructure}
+
+David Patrzeba and David Karivalis will be responsible for maintaining the developer tool stack,
+project organization, and deployment. The main responsibilities here are deploying the application
+to the droplet, maintaining the content versioning system, and building and deploying the virtual
+enviornments to allow for integration testing.
+
+\section{Databases}
+
+Eric Jacob and David Karivalis will be responsible for developing, updating, and maintaining
+the database schema as the project progresses.  The database is another crucical aspect of the
+project as it needs to be extremely quick, highly available, and always accurate.
 
 \section{Portfolio Functionality}
+
 Nick Palumbo will be taking responsibility for the portfolio functionality of this project. One main
 aspect of this is the way a user is able to enact trades within their own portfolio, including basic
 transactions such as buy and sell as well as more advanced actions like short/cover and stop/limit.
@@ -210,6 +225,7 @@ users follow the trends of a company's stock performance and view any other rele
 pertaining to a company, industry, or user.
 
 \section{Account Functionality}
+
 Eric Cuiffo will be taking responsibility for the account functionality of this project. He will be
 heading functions such as registration, Facebook integration, and user profile settings. Also,
 he will implement account management operations such as changing passwords or account deletion.
@@ -217,6 +233,7 @@ In addition, he will create ways in which users can receive information about th
 as downloading personal portfolio reports or the e-mail updates described above.
 
 \section{League Functionality}
+
 Jeff Rabinowitz will be taking responsibility for the league functionality of this project. Pertinent
 functions here will be the powers and actions available to the league manager of a given league,
 such as league settings and player management. Jeff will implement the different league
