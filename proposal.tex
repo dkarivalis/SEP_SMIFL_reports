@@ -66,103 +66,65 @@ platform that can be extended by third parties to implement new and innovative f
 Some scenarios include trading tutorials, and stock prediction integration.  These are not
 of our primary concern.
 
-\section{Market Models}
+\section{Log In, Authentication, and Validation}
 
-The fundamental data modeled by stock market fantasy leagues is the stock market. There
-are many and varied options available to traders, the most fundamental of which are
-buy, sell, and short. We fully intend to support these trading operations. Supporting 
-more advanced trading features, such as trading on margin, is also a goal. 
-
-Group 6 in 2012 implemented an interesting feature: user-defined mutual and hedge funds.
-They created a model in which a single user could create a portfolio in which other 
-users could invest, and follow the gains and losses of that fund. This exposes an interesting
-notion, that of following the trades of other users in a given league. 
-
-We therefore propose functionality of visit-able trader profile pages for 
-users within a given league. In this model, should be able to track the trades 
-and portfolio performances of their peers, while not being able to execute trades 
-on their behalf. This should promote the competition of the league.
+The project plans to use OpenID in order to perform authorization and validation of our users.
+It also allows the project to easily scrape data from our users and prefill their profile for them.
+This should also allow the project to integrate easy with social media.
 
 \section{Social Media Integration}
 
-In recent years, some groups, such as Group 3 in 2012 and Group 6 in 2011, have provided
-Facebook interfaces for their applications. These come in two variants: making Facebook
-the \emph{de facto} portal for an application; and providing the option of using Facebook
-as an authentication system. We note that Group 6 failed to achieve the Facebook authentication
-by their deadline. Therefore, at this time we plan to strike a more conservative path and
-create a stand-alone website with as few external dependencies as possible.
+The project will initially integrate with social media to push out messages about trades and
+achievments. This feature will be able to be turned on and off by the end user, and will support
+multiple social applications.
 
-On the other hand, incorporating modular external features is a definite possibility. We note
-that Group 3 created a Twitter interface for their trading application, through which users
-were able to ``tweet'' trades. Such advanced functionality is an option, but should be considered
-an additional feature, and as such we can consider adding this module at a later point.
+\section{Transactions Ticker}
 
-\section{Transaction Feed}
-
-Another feature inspired by Twitter and Facebook is the implementation of a user transaction
-news feed. A feature which could be integrated into the ``social'' aspect of the leagues
-is the ability to have a feed added to certain relevant pages, containing updates about 
-which transactions other players are making. This could offer an interesting study as to how
-players react to real-time information about player positions.
+The project plans to implement a static transactions ticker which will scoll across the bottom
+of the users screen similar to what you would see on CNBC.  It will be visible to all users
+of the website, whehter logged in or not.  We will also include the indices of the Dow Jones
+Industral Average (DJIA), the Standards \& Poor 500 (S\&P500), and the NASDAQ in a static box
+also much like you would see on CNBC.
 
 \section{Data Source}
 
-After conducting market research, we decided to use Yahoo! Finance's HTTP 
-interface for 20-minutes-delayed financial markets data, as have groups in 
-previous years. Though other services
-exist (e.g. 
-\href{http://www.bloomberg.com/enterprise/enterprise_products/data_optimization/data_feeds/}{Bloomberg},
-\href{http://www.financialcontent.com}{Financial Content}), they are nearly all paid-subscription models. 
-The few services which offer free or ``freemium'' services (e.g. 
-\href{http://eoddata.com}{eoddata}) have other unacceptable limitations, such as a 
-lack of live data. Despite its age, Yahoo! Finance API is currently still the only 
-free, versatile finance API. This is despite its unofficial ceiling of daily requests,
-as we do not expect to receive sufficient volume of traffic as to approach this ceiling.
+The project will use a combination of HTTP \href{http://www.yahoo.com}{Yahoo} Finance API, and
+their \href{http://http://developer.yahoo.com/yql/}{Yahoo Query Language (YQL)}.  This should
+provide some redundancy since YQL has been known to fail service some times.  Since this
+information is provided free of charge, there are limits on the amount of queries we can run
+against these APIs, this limits the size of our initial userbase, but as the application
+grows, additional resources can be purchased.  Another limitation of the Yahoo! data is it
+is out of date.  This is fine for a beta run, but is easily "gamed" once the application goes
+live.  This is a limitation that the project is willing to work with for now.
 
 \section{Mobile and Tablet Interfaces}
 
-One area in which we intend to differ from teams of previous years is with a unified
-mobile and desktop website experience. Due to recent advances in web site design, 
-known as ``responsive design'', it is possible to design a single site which is accessible 
-from mobile, tablet, and traditional web browsers. Various CSS libraries provide
-these designs styles, including
-\href{http://twitter.github.com/bootstrap/}{Twitter Bootstrap}
-and
-\href{http://getskeleton.com}{Skeleton}.
-Additionally, enhancements in mobile 
-browser capabilities enable the use of Javascript, which is now supported universally
-by all modern mobile browsers. These changes opens up availability of our team to dedicate 
-more resources towards core site functionality.
+The project plans to use \href{http://getbootstrap.com}{Bootstrap} to provide mobile first
+front-end for the website.  By doing this, it allows the project to provide a consistant
+user experience across all platforms.  This also serves as a first iteration into the
+mobile/tablet market and gives us a good blue print for a second iteration focused on
+native mobile/tablet applications.
 
-\section{Interactive Portfolio Graphs}
+\section{Portfolio Graphs and News}
 
-Another area in which we intend to offer improvements over features provided in previous years
-is that of interactive portfolio graphs. Highcharts JS provides the 
-\href{http://www.highcharts.com/products/highstock}{HighStock} dynamic interactive graphing API.
-This particular library is designed with financial modeling in mind, as it includes 
-dynamic tooltips, time scrolling and time zooming. Thus we can present a user's entire 
-portfolio's performance in a single object, for concise control and trend analytics. Other 
-options include graphing propsective investments and graphing multiple investments on a 
-single graph for comparison.
+The project plans to implement interactive charting for your portfolio using
+\href{http://www.highcharts.com/products/highstock}{HighStock}.  This will allow
+end users to conduct analysis on their portfolio using visual aids.  The project
+will also implement a news feed, which will update with the latest finacial news
+for companies that are in your portfolio, and companies that you may be tracking.
 
-\section{Periodic Portfolio Email Updates}
+\section{Email Updates}
 
-A feature often presented to commercial investors is periodic performance update emails.
-Like Group 3 in 2011, we would like to implement an email system which
-will periodically inform users of their portfolio performance in various leagues, as well
-as any gains or losses they may have incurred since the last update. We note that Group 3
-failed to model performance of their portfolios, instead simply regurgitating the day's-end
-values. An important improvement will be offering the ability to compare to previous trading
-data.
+The project will facilitate a variety of email updates to the end user.  Some examples are
+transaction confirmation, daily, weekly and monthly portfolio updates, league updates, and
+site updates.  The user will be able to select which email updates they would like to suscribe
+to.
 
-\section{Educational Tutorial}
+\section{Educational Interfaces}
 
-There are two target demographics for this application: students and novice investors. As a
-result, we find it important to the success of our project that we include an interactive
-tutorial to educate our users in both the basic and more advanced aspects of investing
-and finance. This will greatly broaden our appeal to users and make a marked improvement over
-previous interactions by combining social, educational, and entertaining elements to create
-a rich and captivating experience.
+The project plans to implement definition boxes for investment terms across the website.
+Certain terms (eg. P/E) will be highlighted and by mousing over them a dialogue box will pop
+up with a definition and links to external resources for a more in depth analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Team Profile}
