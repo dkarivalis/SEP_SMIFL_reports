@@ -48,14 +48,23 @@ v.1&1/26/2014  \\ \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Project Proposal}
 \label{proposal}
-As mentioned previously, Team X would like to work on ``Capital Games''
-(Project \#5 on 
-\href{http://ece.rutgers.edu/~marsic/books/SE/projects/}{the course website}).
-Our goal is to create a functional stand-alone Stock Market Fantasy League application
-to serve as a platform for executing stock market simulations. We intend to deploy
-to Amazon's Elastic Compute Cloud (EC2), a virtual cloud hosting provider. EC2 provides
-a virtual scalable machine instance on Amazon's servers, which provides a platform to 
-expand infrastructure if necessary.
+Team 1 has elected to work on \href{http://ece.rutgers.edu/~marsic/books/SE/projects/}
+{Project 5: Stock Market Investment Fantasy League} with the goal of implementing a
+web application. We intend to use a RESTful API for executing all requests by the end user
+allowing easy expansion to the desktop and mobile application domains. We are deploying to
+a \href{http://www.digitialocean.com}{DigitalOcean} Virtual Private Server (droplet) which
+will allow us to scale as necessary, both vertically and horizontally.\\
+
+The goal of our web application is to act as the initial and primary interface to our backend
+services. These will include the ability to conduct buy, sell, short, stop, and limit orders on
+at least the NYSE and NASDAQ stock exchanges.  We also plan to support global leader boards,
+individual leagues with goals (eg. first to double their money, first to gain 8\% in a day, etc...),
+and global achievements (similar to xBox achievments).\\
+
+Because our project will be built using RESTful principles, it will be able to act as a
+platform that can be extended by third parties to implement new and innovative features.
+Some scenarios include trading tutorials, and stock prediction integration.  These are not
+of our primary concern.
 
 \section{Market Models}
 
