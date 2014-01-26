@@ -1,0 +1,105 @@
+\ProvidesPackage{smiflstyle}
+
+%used packages;
+\usepackage[dvipsnames,usenames]{color}
+\usepackage{morefloats}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{longtable} % added by Val for the user stories.
+
+%unused packages; if we need one of these uncomment and move into the used packages section
+%\usepackage{url}
+%\usepackage{tikz}  % A dependency for drawing directly onto page
+%\usetikzlibrary{arrows,shadows} % for pgf-umlsd
+%\usepackage[underline=true,rounded corners=false]{pgf-umlsd} % for UML SD
+
+\bibliographystyle{ieeetr}
+
+\hypersetup{
+    %bookmarks=false,    % show bookmarks bar?
+    pdftitle={},    % title
+    pdfauthor={},                     % author
+    pdfsubject={},        % subject of the document
+    pdfkeywords={}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=blue,        % color of external links
+    linktoc=page            % only page is linked
+}%
+% put all other packages here:
+
+% define color scheme for report
+\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{rgb}{0.22,0.45,0.70}% light blue
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+% Rename "Bibliography" to "References"
+\AtBeginDocument{\renewcommand{\bibname}{References}}
+
+% define unique font and formatting of chapters
+\makechapterstyle{southall}{
+\setlength{\afterchapskip}{5\baselineskip}
+\setlength{\beforechapskip}{36pt}
+\setlength{\midchapskip}{\textwidth}
+\addtolength{\midchapskip}{-\beforechapskip}
+\renewcommand*{\chapterheadstart}{\vspace*{2\baselineskip}}
+\renewcommand*{\chaptitlefont}{\huge\rmfamily\raggedright}
+\renewcommand*{\chapnumfont}{\chaptitlefont}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapternamenum}{}
+\renewcommand*{\afterchapternum}{}
+\renewcommand*{\printchapternum}{%
+\begin{minipage}[t][\baselineskip][b]{\beforechapskip}
+{\vspace{0pt} \color{color2} \chapnumfont%%%\figureversion{lining}
+\thechapter}
+\end{minipage}}
+\renewcommand*{\printchaptertitle}[1]{%
+\hfill\begin{minipage}[t]{\midchapskip}
+{\vspace{0pt}\color{color1}\chaptitlefont ##1\par}\end{minipage}}
+\renewcommand*{\afterchaptertitle}{%
+\par\vspace{\baselineskip}%
+\color{color2} \hrulefill \par\nobreak\noindent \vskip\afterchapskip}}
+
+
+% define coloring of sections
+\titleformat{\section}
+{\color{color1}\normalfont\Large\bfseries}
+{\color{color2}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{color1}\normalfont\large\bfseries}
+{\color{color2}\thesection}{1em}{}
+
+% define page layout
+\setlrmarginsandblock{1in}{1in}{*}
+\setulmarginsandblock{1in}{1in}{*}
+\checkandfixthelayout
+
+\chapterstyle{southall}
+
+
+% define custom title page script (highly temperamental)
+\makeatletter
+\newlength\drop
+\newcommand*{\titleGM}{%
+\thispagestyle{empty}
+\vspace{6in}
+\vfill
+\begingroup% Gentle Madness
+      {\centering\Huge\@title\par}\vskip3.37\baselineskip
+      {\centering\Large\@author\par}\vskip3.37\baselineskip
+      {\centering\large\@date\par}
+      \vspace{0.5\textheight}
+\vfill
+\null
+\endgroup}
+\makeatother
