@@ -4,7 +4,7 @@
 % define custom title layout (slightly temperamental)
 \title{%
 {\color{color2} \hrule}\vspace{1cm}
-\Huge{\color{color1} Project Proposal:\\Paramount Investments League %temporary name, we should change this
+\Huge{\color{color1} Project Proposal:\\The Paramount Investments League %temporary name, we should change this
 \vspace{1cm}
 {\color{color2} \hrule}\vspace{1cm}}
 \Large{ \color{color2} Software Engineering\\
@@ -43,13 +43,13 @@ v.1&1/26/2014  \\ \hline
 
 \pagebreak  % flush the next page
 \tableofcontents % create TOC
-
+\setlength\parindent{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Team Profile}
 
 Team 1 will be working on \href{http://ece.rutgers.edu/~marsic/books/SE/projects/}
-{Project 5: Stock Market Investment Fantasy League} and have named their project
-''Paramount Investments League''. This project is intended to serve
+{Project 5: Stock Market Investment Fantasy League} and they have named their project
+``The Paramount Investments League''. This project is intended to serve
 as an exercise in software engineering focusing on building experience in the design,
 architecture, construction, test, and maintenance of a small-to-mid sized complex
 software application.\\
@@ -97,44 +97,19 @@ Team 1 has elected to work on \href{http://ece.rutgers.edu/~marsic/books/SE/proj
 web application to service a core audience of novice investors in introducing them to
 the ins and outs of tradeable assets.  Novice investors come from all ages and backgrounds
 but tend to fall into the 16-30 year old crowd.  By "game-ifying" the action of trading
-stocks by allowing users to collect achievments and be rewarded in interesting ways, the
-goal is to maintain their intrest in the application.
-
-OLD STUFF:
-
-We intend to use a RESTful API for executing all requests by the end user
-allowing easy expansion to the desktop and mobile application domains. We are deploying to
-a \href{http://www.digitialocean.com}{DigitalOcean} Virtual Private Server (droplet) which
-will allow us to scale as necessary, both vertically and horizontally.\\
-
-The goal of our web application is to act as the initial and primary interface to our backend
-services. These will include the ability to conduct buy, sell, short, stop, and limit orders on
-at least the NYSE and NASDAQ stock exchanges.  We also plan to support global leader boards,
-individual leagues with goals (eg. first to double their money, first to gain 8\% in a day, etc...),
-and global achievements (similar to xBox achievments).\\
-
-Because our project will be built using RESTful principles, it will be able to act as a
-platform that can be extended by third parties to implement new and innovative features.
-Some scenarios include trading tutorials, and stock prediction integration.  These are not
-of our primary concern.
+stocks; by allowing users to collect achievments and be rewarded in interesting ways; we
+plan to maintain their interest in the game and grow the user base while simultaneously
+teaching them basic investment strategies.
 
 \section{Resgistration}
 
 The end user should be able to register and login to the system in a simple and straight forward
 manner requesting the least amount of information necessary in order to start using the system.
 
-The project plans to use OpenID in order to perform authorization and validation of our users.
-It also allows the project to easily scrape data from our users and prefill their profile for them.
-This should also allow the project to integrate easy with social media.
-
 \section{Social Media Integration}
 
 End users should be able to push messages to their social media personality that indicate
 recent trades that they have made or achievments that they have earned.
-
-The project will initially integrate with social media to push out messages about trades and
-achievments. This feature will be able to be turned on and off by the end user, and will support
-multiple social applications.
 
 \section{Transactions Ticker}
 
@@ -142,23 +117,11 @@ All site vistors should see a ticker of the most recent trades scroll across the
 screen at a speed such that they can read and process the information easily much like seen on
 CNBC.
 
-The project plans to implement a static transactions ticker which will scoll across the bottom
-of the users screen similar to what you would see on CNBC.  It will be visible to all users
-of the website, whehter logged in or not.  We will also include the indices of the Dow Jones
-Industral Average (DJIA), the Standards \& Poor 500 (S\&P500), and the NASDAQ in a static box
-also much like you would see on CNBC.
-
 \section{Unified Interfaces}
 
 The end should experience a unified experience across mobile, tablet, and desktop browsers.
 The customer should be able to use the major modern browsers Firefox, Chrome, Safari, and
 Internet Explorer.
-
-The project plans to use \href{http://getbootstrap.com}{Bootstrap} to provide mobile first
-front-end for the website.  By doing this, it allows the project to provide a consistant
-user experience across all platforms.  This also serves as a first iteration into the
-mobile/tablet market and gives us a good blue print for a second iteration focused on
-native mobile/tablet applications.
 
 \section{Portfolio Management}
 
@@ -172,29 +135,14 @@ End users should be presented with a news feed related to his/her portfolio.
 Additionally they should be able to manipulate graphs in order to compare
 performance of a variety of tradeable assets.
 
-The project plans to implement interactive charting for your portfolio using
-\href{http://www.highcharts.com/products/highstock}{HighStock}.  This will allow
-end users to conduct analysis on their portfolio using visual aids.  The project
-will also implement a news feed, which will update with the latest finacial news
-for companies that are in your portfolio, and companies that you may be tracking.
-
 \section{Email Updates}
 
 The end user should be able to receive email updates at a frequency and granularity that they choose.
-
-The project will facilitate a variety of email updates to the end user.  Some examples are
-transaction confirmation, daily, weekly and monthly portfolio updates, league updates, and
-site updates.  The user will be able to select which email updates they would like to suscribe
-to.
 
 \section{Educational Interfaces}
 
 End users should be able to mouse over investment terms (eg, P/E ratio) and see a pop up
 dialog with a brief description and links to internal and external resources.
-
-The project plans to implement definition boxes for investment terms across the website.
-Certain terms (eg. P/E) will be highlighted and by mousing over them a dialogue box will pop
-up with a definition and links to external resources for a more in depth analysis.
 
 \section{Leagues}
 
@@ -248,7 +196,7 @@ Eric Jacob and Christopher Mancuso
 
 \section{League Functionality}
 
-Jesse Zeigler and Eric Jacob
+Jesse Zeigler and David Patrzeba
 
 \section{Acheivments Function}
 
