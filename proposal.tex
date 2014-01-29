@@ -110,7 +110,10 @@ platform that can be extended by third parties to implement new and innovative f
 Some scenarios include trading tutorials, and stock prediction integration.  These are not
 of our primary concern.
 
-\section{Log In, Authentication, and Validation}
+\section{Resgistration}
+
+The customer should be able to register and login to the system in a simple and straight forward
+manner requesting the least amount of information necessary in order to use the system.
 
 The project plans to use OpenID in order to perform authorization and validation of our users.
 It also allows the project to easily scrape data from our users and prefill their profile for them.
@@ -118,11 +121,16 @@ This should also allow the project to integrate easy with social media.
 
 \section{Social Media Integration}
 
+The customer should be able to push messages to their social media personality.
+
 The project will initially integrate with social media to push out messages about trades and
 achievments. This feature will be able to be turned on and off by the end user, and will support
 multiple social applications.
 
 \section{Transactions Ticker}
+
+The customer should see a ticker of the most recent trades scroll across the bottom of their
+screen at a speed such that they can read and process the information easily.
 
 The project plans to implement a static transactions ticker which will scoll across the bottom
 of the users screen similar to what you would see on CNBC.  It will be visible to all users
@@ -130,18 +138,10 @@ of the website, whehter logged in or not.  We will also include the indices of t
 Industral Average (DJIA), the Standards \& Poor 500 (S\&P500), and the NASDAQ in a static box
 also much like you would see on CNBC.
 
-\section{Data Source}
+\section{Unified Interfaces}
 
-The project will use a combination of HTTP \href{http://www.yahoo.com}{Yahoo} Finance API, and
-their \href{http://http://developer.yahoo.com/yql/}{Yahoo Query Language (YQL)}.  This should
-provide some redundancy since YQL has been known to fail service some times.  Since this
-information is provided free of charge, there are limits on the amount of queries we can run
-against these APIs, this limits the size of our initial userbase, but as the application
-grows, additional resources can be purchased.  Another limitation of the Yahoo! data is it
-is out of date.  This is fine for a beta run, but is easily "gamed" once the application goes
-live.  This is a limitation that the project is willing to work with for now.
-
-\section{Mobile and Tablet Interfaces}
+The customer should experience a unified experience across mobile, tablet, and desktop browswers.
+The customer should be able to use the three major modern browsers.
 
 The project plans to use \href{http://getbootstrap.com}{Bootstrap} to provide mobile first
 front-end for the website.  By doing this, it allows the project to provide a consistant
@@ -149,7 +149,17 @@ user experience across all platforms.  This also serves as a first iteration int
 mobile/tablet market and gives us a good blue print for a second iteration focused on
 native mobile/tablet applications.
 
-\section{Portfolio Graphs and News}
+\section{Portfolio Management}
+
+The customer should be able to place orders to buy, sell, short, stop, and limit on any
+tradeable asset available on the NYSE and the NASDAQ.  The customer should be able to
+cancel any pending orders that have not gone through.
+
+\section{Graphs and News}
+
+The customer should be presented with a news feed related to his portfolio, and should
+be able to manipulate graphs llllllin order to compare performance of a variety of tradeable
+assets.
 
 The project plans to implement interactive charting for your portfolio using
 \href{http://www.highcharts.com/products/highstock}{HighStock}.  This will allow
@@ -158,6 +168,8 @@ will also implement a news feed, which will update with the latest finacial news
 for companies that are in your portfolio, and companies that you may be tracking.
 
 \section{Email Updates}
+
+The end user should be able to receive email updates at a frequency that they choose.
 
 The project will facilitate a variety of email updates to the end user.  Some examples are
 transaction confirmation, daily, weekly and monthly portfolio updates, league updates, and
@@ -170,83 +182,61 @@ The project plans to implement definition boxes for investment terms across the 
 Certain terms (eg. P/E) will be highlighted and by mousing over them a dialogue box will pop
 up with a definition and links to external resources for a more in depth analysis.
 
+\section{Leagues}
+
+Users should be able to create, modify, and participate in leagues that agree to a customizable
+set of rules to determine a winner.
+
+\section{Achievments}
+
+Users should receive recognition of achievments accomplished, eg: earn 10\% in a month.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Product Ownership}
+The project has identified 10 core pieces of functionality which will be implemented by a team of two
+with the first name listed set as the go to man for that given piece of functionality.  Every team
+member will be assigned a minimum of 3 pieces of functionality to be responsible for and will be
+lead on no more than two pieces of functionality.
 
-Do to the inexperience on the overall team, the responsibilities will be broken down into teams of two.
-Teams will be cross pollinated so that no two man team is responsible for two different aspects of the
-project. Every two man team will have a lead, who will act as the point of contact (POC) for the that
-teams responsibilities. Unit and integration testing will be the responsibility of each individual team.
-Every team member will be provided with a virtual image of the deployment enviornment in order to ensure
-that their changes interoperate with the most recent build of the application.
+\section{Registration Functionality}
 
-\section{Technical Lead}
+Evan Arbeitman and Christopher Mancuso
 
-David Patrzeba will be acting as technical lead for the entire project. While in this role he will be
-responsible in advising all the teams in options available to them, possible solutions, and ensuring
-that functionality is interoperable.
+\section{Social Media Integration Functionality}
 
-\section{Infrastructure}
+Jesse Ziegler and Eric Jacob
 
-David Patrzeba and David Karivalis will be responsible for maintaining the developer tool stack,
-project organization, and deployment. The main responsibilities here are deploying the application
-to the droplet, maintaining the content versioning system, and building and deploying the virtual
-enviornments to allow for integration testing.
+\section{Transaction Ticker Functionality}
 
-\section{Databases}
+David Karivalis and Evan Arbeitman
 
-Eric Jacob and David Karivalis will be responsible for developing, updating, and maintaining
-the database schema as the project progresses.  The database is another crucical aspect of the
-project as it needs to be extremely quick, highly available, and always accurate.
+\section{Unified Interface Functionality}
 
-\section{Portfolio Functionality}
+David Karivalis and Eric Jacob
 
-Nick Palumbo will be taking responsibility for the portfolio functionality of this project. One main
-aspect of this is the way a user is able to enact trades within their own portfolio, including basic
-transactions such as buy and sell as well as more advanced actions like short/cover and stop/limit.
-In addition, Nick will be responsible for the structure of leagues and the way in which users create
-and join leagues.
+\section{Portfolio Managment Functionality}
 
-\section{Social Functionality}
+David Patrzeba and David Karivalis
 
-Dario Rethage will be taking responsibility for the social functionality of this project. As this
-application will involve grouping users into leagues and competition, it is important for users
-to be able to interact with one another in the form of viewing one another's portfolios,
-leaderboards, and the live activity stream. Dario will be in charge of implementing these functions
-in a way that is intuitive and clean as well implementing a commenting/messaging system
-between users.
+\section{Graphs and News Functionality}
 
-\section{Interactive and Graphical Functionality}
+Christopher Mancuso and Jesse Zeigler
 
-Val Red will be taking responsibility for the interactive and graphical functionality of this project.
-This includes being able to view one's own portfolio as well as the finances of his league mates in
-an easily maneuverable and manipulatable way. In addition, Val will be in charge of the way
-users follow the trends of a company's stock performance and view any other relevant data
-pertaining to a company, industry, or user.
+\section{Email Update Functionality}
 
-\section{Account Functionality}
+Evan Arbeitman and Jesse Zeigler
 
-Eric Cuiffo will be taking responsibility for the account functionality of this project. He will be
-heading functions such as registration, Facebook integration, and user profile settings. Also,
-he will implement account management operations such as changing passwords or account deletion.
-In addition, he will create ways in which users can receive information about their accounts, such
-as downloading personal portfolio reports or the e-mail updates described above.
+\section{Educational Interface Functionality}
+
+Eric Jacob and Christopher Mancuso
 
 \section{League Functionality}
 
-Jeff Rabinowitz will be taking responsibility for the league functionality of this project. Pertinent
-functions here will be the powers and actions available to the league manager of a given league,
-such as league settings and player management. Jeff will implement the different league
-settings available to a manager, as well the ability to create league-wide announcements and
-moderating comments within the league.
+Jesse Zeigler and Eric Jacob
 
-\section{Administrative Functionality}
+\section{Acheivments Function}
 
-Jeff Adler will be taking responsibility for the administrative functionality of this project. This essentially
-covers all the power available to a site administrator. He will be responsible for the ways in which an
-administrator can manage leagues, users, and user interactions. He will also generate the way in which
-site administrators can view statistics about the website, such as user count, active leagues, transactions,
-new accounts, popular stocks, and other relevant data that will dictate product decisions down the road.
+David Patrzeba and David Karivalis
 
 \end{document}
 
