@@ -1,0 +1,44 @@
+\documentclass[11pt,letterpaper,oneside]{memoir}
+\usepackage{smiflstyle}
+
+% Include Title page
+\include{./tex/title}
+
+\begin{document}
+\titleGM    % use this instead instead of \maketitle
+
+\include{./tex/linksAndVersion.tex}
+
+% Include Contributions page
+\include{./tex/contributions}
+
+\pagebreak
+
+\tableofcontents % create TOC
+
+% Chapter 1
+% Include Customer Statement of Requirements
+\include{./tex/custStmntofRqrmnts}
+
+% Input Glossary
+\input{./tex/glossary}
+
+% Chapter 2
+% Include System Enumerated Requirements
+\input{./tex/enumrequirements}
+
+% Include FURPS
+\input{./tex/furps}
+
+% Input On Screen Appearance Requirements
+%\input{./tex/onscreenappearancerequirements}
+
+% Project Management
+% This includes timelines, how the team divided up work, etc..
+\include{./tex/management}
+
+% References
+% This includes... references
+%\include{./tex/references}
+
+\end{document}
