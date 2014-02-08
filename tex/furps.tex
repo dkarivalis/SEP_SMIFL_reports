@@ -1,25 +1,50 @@
 \section{Nonfunctional Requirements}
 
-\subsection{Functional}
-Additional features for security could be enabled through the use of various third-party plugins. There exists several packages for the purpose of authentication and authorization of applications. 
-Key authentication features to are the the ability to encrypt and store passwords, provide recovery options for users that have forgotten their password and store a cookie to validate the session. 
-Other plugins may provide authorization features. These will allow for a user to perform different actions based on their position. For example, a user will be able to comment and delete their own comment, but an admin will be able to comment and delete all comments on the league they are an admin of.
+\subsection{Functionality}
+Additional features for security will be enabled through the use of a
+OpenID and OAuth through a third-party library. There exists several packages
+for the purpose of authentication and authorization of users. Key authentication
+features are the ability to encrypt and store passwords, provide recovery
+options for users that have forgotten their password, and store a cookie to
+validate the session.
 
 
 \subsection{Usability}
-A key point in the design of this application is ease of use and appeal to the users. Through the use of CSS and Bootstrap, we will be able to make the theme of our application consistant and pleasing. With CSS, we will create a universal header and navigation bar that each page will build off of. Javascript will provide for responsiveness and it will be the key framework for which we build our interactive tutorials upon. The interactive tutorials are meant for inexperienced users in the topic of stocks to learn the fundamentals of the game. Any user that finds themselves lost later on can always view these tutorials again or browse through any specific topic.
+A key point in the design of this application is ease of use and appeal to the
+users. The application should be interactive, informative and consistent across
+multiple platform paradigms. Additionally the application will be used to
+provide the educational interfaces noted in ST-9 which should be able to be
+toggled on and off so that users can always view the information again.
 
 
 \subsection{Reliability}
-In order to ensure that there is no confusion to the user in the case of the internet or server failure, all transactions end with a final confirmation, and no changes to the account are made until after this confirmation. A user that leaves the application and returns later will still be logged in. Server failures should be dealt with by the application's host.
+In order to ensure that there is no confusion to the user in the case of the
+internet or server failure, all transactions end with a final confirmation, and
+no changes to the account are made until after this confirmation. The user's
+portfolio will thus always be in a consistent state and will be restored when
+the user is able to log back in. A user that leaves the application and returns
+later will still be logged in. Server failure should also be dealt with by
+keeping backups of user data.  Proper care should also be taken to handle a
+situation where a particular stock source is not available (i.e. Yahoo Finance).
 
 
 \subsection{Performance}
-The performance of the site is mostly maintained by an appropriate technology stack consisting of a web framework, database, web server, and assets server. Performance management tools are built into the server for maintenance by application developers (not necessarily site administrators).
+In order to have a great performance, the website should be as lightweight as
+possible by keeping hardware demands to a minimum on both the client and server
+sides. For it to be efficient, any task initiated by the user should be
+completed in a timely manner. The web server should be able to serve concurrent
+requests especially when a large number of users are logged in. Any frameworks
+used should be lightweight but consideration should be taken not to prematurely
+optimize.
 
 
 \subsection{Supportability}
-Various measures and plugins exist for supportability. Between a combination of plugins enabling test-driven and behavior-driven development, supporting and modifying should be relatively painless.
-The project should be highly portable in the sense that a user will be able to access the website on all major browsers and mobile devices, and have a specilized appearance for both. 
-For maintainability, there is the option of a user to be a site admin. These users can view details about the entire site, such as activity and user feedback. 
-There also exists an internationalization framework for translating to provide multi-language support.
+It should be feasible to extend pr update any server components and include
+improved versions of modules which can be installed only by administrators. For
+scaling purposes, it should be made easy to include an additional number of
+servers to achieve load balancing. The system should be platform independent so
+that it is easy to move to newer technologies or the next versions of web
+server. The system itself should also be backed up to a remote server for the
+sole purpose of extending functionality and testing new features in a
+controlled environment.
+
