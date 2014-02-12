@@ -1,54 +1,114 @@
 \section{Glossary of Terms}
 
 {
-\raggedright
-\textbf{Margin} -- Borrowed capital used to execute trades, i.e. ``buy on margin''. Although leveraging margin is possible for normal
-	buy and sell orders, they are critical to short orders, in which the entire stock is sold without actually being owned. \cite{inv:marginreq} Margin
-	can refer to both the act of purchasing a stock on credit, and to the percentage of a stock's equity value required to be held
-	in capital against the risk of the stock decreasing in value. \cite{inv:margin}\\
-\textbf{League} -- an instance of a market simulation with a predefined rule-set and containing many \emph{investors}. All leagues are created by a \emph{League Manager} There are two types of leagues:
+\setlength{\parindent}{0cm}
+\textbf{Achievement} -- Any set goal reached by an investor.
+Achievement rewards can be managed by a league manager and
+may include badges, capital, equity, etc.\\
+
+\textbf{Transaction Ticker} -- Constantly updating scroll of
+most recent trades across the market. Users can observe market
+trends from global equities which may or may not already be
+in their portfolio.\\
+
+\textbf{Leaderboard} -- Global or league based ranking system
+determined by overall net worth of player.\\
+
+\textbf{Security} -- A tradable asset of any kind. Can include
+debts, equities, or derivatives. For the purpose of this game,
+we will be dealing primarily with equities.\newline
+
+\textbf{Dividend} -- A payment made by a corporation to its
+shareholders, generally as a distribution of profit. It is
+usually distributed as a fixed percent of shareholder value.\\
+
+\textbf{Derivative} -- Any financial contract which derives its
+value from another asset or index.\\
+
 \begin{itemize}
-\item \textbf{Public} -- Any Investor can join this type of League
-\item \textbf{Private} -- A private league can only be seen by its members and administrators. A User does not join this league, rather they are placed into it by a League Manager.
+    \item \textbf{Option} -- Gives the user the option to buy or sell an
+asset at a specified price on or before a given date. The buyer
+and seller are both obligated to fulfill the transaction on the
+given date if the option is taken.\\
+
+    \item \textbf{Future} - Allows the buyer to buy an asset at its current
+price and pay for it at that price in the future. A future is
+generally exchange traded. The buyer and seller are both obligated
+to fulfill the transaction on the given date if the future is taken.\\
+
+    \item \textbf{Forward} -- Allows the buyer to buy an asset at its current
+price and pay for it at that price in the future. A forward is a
+private agreement between buyer and seller not necessarily based around
+market equity. The buyer and seller are both obligated to fulfill
+the transaction on the given date if the future is taken.\\
 \end{itemize}
-\textbf{Order} -- An \emph{investor} must place an order for the purchase or sale of a \emph{stock}.
-\begin{itemize}
-\item \textbf{Stop Order} -- A type of order used to protect gains or limit losses. Stop loss
-orders are activated if a stock drops below the stop price and buy stop orders
-are activated if a stock rises above the stop price. \cite{inv:stop} When activated, a Stop Order becomes a
-\emph{Market Order}. 
-\item \textbf{Limit Order} -- A type of order used to prevent trades from occurring except at indicated
-prices. Buy limit orders will only be executed at or below the indicated price, and sell limit
-orders will be executed at or above the indicated price. Limit orders are not guaranteed to ever
-be executed and expire after a specified duration. \cite{inv:limit}
-\item \textbf{Market Order} -- An order to be executed as soon as possible at current market prices.\cite{inv:market}
-	\begin{itemize}
-	\item \textbf{Short Order} -- A type of transaction in which an Investor symbolically borrows
-		a certain number of stocks (using their existing Margin) and sells them at market price,
-		expecting the stock value to decrease and to make a profit when exiting the position. 
-		Exiting is called a \emph{cover}. \cite{inv:short}
-	\item \textbf{Cover Order} -- A type of transaction in which an Investor purchases stocks to 
-		\emph{cover} the symbolic loan of stocks created by a \emph{short order}. \cite{inv:cover}
-	\end{itemize}
-\end{itemize}
-\textbf{Portfolio} -- A detailed account of the \emph{stocks} associated with an \emph{investor} 
-in a given league. Portfolios are unique. 
+
+\textbf{League} -- A market simulation with a pre-determined rule set
+and several investors with a common goal to determine a winner. Goals
+can vary across leagues as determined by league managers. Investors can
+choose to opt into a private league, public league, or no league at all.\\
+
+\textbf{Portfolio} -- A detailed account of assets associated with a
+particular investor in a given league. Portfolios are unique to each user
+and will contain specific details such as earnings, losses, performance,
+averages, as well as detailed asset performances of equities within the
+given portfolio.\\
+
+\textbf{League manager} -- The league manager will have the responsibility
+of adding and/or removing investors from the league. League managers
+control settings, and victory conditions for a particular league. League
+managers maintain their manager status only for the league in which they
+have created.\\
+
+\textbf{Order} -- An investor must place an order for the purchase or
+sale of an asset.\\
 
 \textbf{Stock} -- A type of asset that represents equity in a company.
 \begin{itemize}
-\item \textbf{Ask Price} -- The price at which a trader is willing to sell a stock.
-\item \textbf{Bid Price} -- The price a trader is willing to pay for a stock.
-\item \textbf{Bid-Ask Spread} -- The bid-ask spread describes the difference in price between the bid and the ask. These two prices are marginally different, but always with the ask being the more expensive of the two. It represents the friction inherent in trading a stock. \cite{inv:bidask}
-\item \textbf{Ticker Symbol} -- an abbreviation used to uniquely identify publicly traded shares of a particular stock on a particular stock market.
-\item \textbf{Symbol List} -- a list of a market/several market's ticker symbols.
+    \item \textbf{Ask Price} -- The price at which a trader is willing
+                                to sell a stock.\\
+    \item \textbf{Bid Price} -- The price a trader is willing to pay for
+                                a stock.\\
+    \item \textbf{Bid-Ask Spread} -- The bid-ask spread describes the
+                                     difference in price between the bid
+                                     and the ask. These two prices are
+                                     marginally different, but always with
+                                     the ask being the more expensive of the
+                                     two. It represents the friction inherent
+                                     in trading a stock.\\
 \end{itemize}
-\textbf{User Roles} -- Each user with an account can have one or more of the following roles:
+
+\textbf{Ticker Symbol} -- an abbreviation used to uniquely identify publicly
+traded shares of a particular stock on a particular stock market.\\
+
+\textbf{Symbol List} -- a list of a market/several market's ticker symbols.\\
+
+
+\textbf{Market Order} -- Any order placed for immediate market transaction.\\
+
 \begin{itemize}
-\item \textbf{Investor} -- A instance of the User, who commits capital expecting to see it grow in value. Users Instances are referred 
-to as \emph{investors}. 
-\item \textbf{League Manager} -- A League Manager is an \emph{investor}.  A user does not necessarily have this role for every league they are in.  Only ones in which they created the League or were given a League Manager role from another League Manager of that League. League Managers control settings of leagues.
-\item \textbf{Site Administrator} -- This is the most powerful role. A Site Administrator is a user with elevated privileges, to ban users and delete offensive comments.
-\item \textbf{Suspended} -- A user with this role is currently pending losing their Suspended Role, or granted a \emph{Banned} role.  While suspended an \emph{Investor} cannot do anything with their Account other then login and view the duration of their suspension, The reasoning behind their ban, and an appeal form if the situation permits.
-\item \textbf{Banned} -- A banned user can never be unbanned, this occurs after a rejected suspension appeal.
+    \item \textbf{Buy} -- User has elected to purchase a particular stock and has placed
+a bid for that stock.\\
+
+    \item \textbf{Sell} -- User has elected to sell a particular stock and has posted an
+ask price for it.\\
+
+    \item \textbf{Short} -- Typically used by an investor who expects the value of
+a stock to decrease. The investors borrows shares of a particular stock and sells
+them at market price. The investor is responsible for the increased value as well
+should the stock's value increase.\\
 \end{itemize}
+
+\textbf{Limit} - An investment which will only take place at a given price. An
+investor placing a buy limit will place a maximum amount the pay and an investor
+place a sell limit will place a minimum value for which the stock be sold. Limit
+orders are not guaranteed to ever process, and only do when the particular limit
+is reached.\\
+
+\textbf{Stop} -- Orders which are activated if a particular stop falls below or
+rises above a particular price. It is used to minimize gains and losses for the
+investor.\\
+
+\textbf{Share} -- A small percentage of a given company which can purchased or
+sold from other traders.\\
 }
