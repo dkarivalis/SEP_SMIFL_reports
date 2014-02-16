@@ -1,3 +1,6 @@
+% Author: David L Patrzeba
+% Team 1 Software Engineering
+
 \documentclass[11pt,letterpaper,oneside]{memoir}
 \usepackage{smiflstyle}
 \usepackage{indentfirst}
@@ -8,14 +11,12 @@
 \begin{document}
 \titleGM    % use this instead instead of \maketitle
 
-\include{./tex/linksAndVersion.tex}
-
 % Include Contributions page
-\include{./tex/contributions}
+\include{./tex/revisionHistory}
 
-\pagebreak
 
 \tableofcontents % create TOC
+\pagebreak
 
 % Chapter 1
 % Include Customer Statement of Requirements
@@ -34,12 +35,20 @@
 % Input On Screen Appearance Requirements
 %\input{./tex/onscreenappearancerequirements}
 
-% Project Management
+% Chapter 3
+% Include Functional Requirements Spec
+\include{./tex/functionalrequirements}
+
+% Chapter 4
+% Include UI Specification
+\include{./tex/uispec}
+
+% Chapter 5
 % This includes timelines, how the team divided up work, etc..
-\include{./tex/management}
+\include{./tex/managment}
 
 % References
-% This includes... references
-%\include{./tex/references}
+\bibliography{citations}
+
 
 \end{document}
