@@ -24,6 +24,10 @@ Once the user has created an account, they can log in through OpenID/OAuth and w
 generally remain logged into the system as long as they remain logged into their service
 of their choice.\\
 
+\textbf{CG-BP01} – A user can create an account such to access the full features of the game.
+They can return and log in with minimal burden and access all of the information previously
+stored. \\
+
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced
 \label{UC-1}
@@ -69,6 +73,11 @@ A private league will restrict users to those invited by the league manager, and
 a password to join. After initial setup, league managers will have minimal access to settings.
 That is, halfway through a league, the manager cannot decide to change the victory conditions.
 This prevents the league manager from abusing power to tip the scales in his or her favor.\\
+
+\textbf{CG-BP02} – A user can create a league or join a league if he or she desires. Note that
+users may trade without a league, but has access to create or join a new league at any time.
+Leagues may be private or public. \\
+
 
 \begin{centering}
 \renewcommand\arraystretch{1.3}
@@ -124,7 +133,11 @@ specific info page. That is, the user can view detailed information of each stoc
 before committing to a trade from a variety of sources. Users will be able to compare their
 portfolio’s performance to typical market trends from the Nasdaq, S\&P 500, and DJIA. There
 will also be a stock ticker ribbon on the bottom of the screen for users to receive constant
-real time feeds of most recent trades happening within the market.\\ \\
+real time feeds of most recent trades happening within the market.\\
+
+\textbf{CG-BP03} – A user can view market data in near-real time. They will have access to data
+taken from the Yahoo! Finance API and can view this data in their portfolio or by searching
+for stocks using tickers. \\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3}
@@ -177,6 +190,11 @@ or security within the limits of their finances and league settings through this
 Users will also be able to customize and change views as well as add stock index comparisons
 to monitor their success vs market success.\\
 
+\textbf{CG-BP04} – All users will have a portfolio which will house detailed information
+regarding all of their stocks and performance. They will be able to perform trades
+from this location and will also have access to the core functionality of the site
+through this page. It will essentially be the user’s home page. \\
+
 \begin{centering}
 \label{UC-4}
 \renewcommand\arraystretch{1.3}
@@ -214,7 +232,11 @@ certain company’s page and elect to purchase shares there. Selling shares shou
 through the user’s portfolio where they may see the exact quantity of shares of each respective
 companies they own. Error messages will be thrown and orders not processed should a user request
 to buy more shares of a company the he or she can afford or the user attempts to sell more than
-he or she has. Main transactions will occur through the user’s portfolio. \\ \\
+he or she has. Main transactions will occur through the user’s portfolio. \\
+
+\textbf{CG-BP05} – A user can place any market order he or she wishes to place (I.E. buy,
+sell, short, limit, stop, etc). These trades can be executed from multiple locations and
+at the prohibitions of the league rules. \\
 
 \begin{centering}
 \label{UC-5}
@@ -264,6 +286,11 @@ suspend or ban users or leagues and ensure that the site is not being abused. Th
 is not limited to robot or AI users or user account spamming or advertising rather than trading
 properly. \\
 
+\textbf{CG-BP06} – Administrators will have access to suspend, ban, or remove leagues or players
+completely. Administrators will have elevated privileges relative to other users and will
+use these privileges with the sole intention of maintaining the integrity of the software.\\
+
+
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced
 \label{UC-6}
@@ -298,6 +325,10 @@ the beginning of the league and not touched for the duration. League manager wil
 few other elevated privileges depending on whether he or she also falls into the investor role
 as well. Investors will be allowed to manage their own personal settings including but not
 limited to: email alerts, social media integration, and notifications.\\
+
+\textbf{CG-BP07} – League managers will have access to a list of settings which they may
+select before the initiation of the league competition. They will have slightly elevated
+privileges from basic investors, but not enough to abuse power. \\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced
