@@ -1,5 +1,53 @@
 \chapter{Domain Model}
 
+
+\section{Concept Definitions}
+
+\subsection{Account Creator}
+The first step for anyone using this system is to gain access by creating an Account.
+Account Creator is an interface that allows a player to create a new Investor account.
+It will check with the database for an account with the same details, and if not found
+it will proceed to create the account and store the details into the database.\\
+
+\subsection{Player Profile}
+The Player Profile displays statistics and saved settings for the user that logs
+into The Paramount Investments League. Player Profile should query Yahoo! Finance
+Adaptor API to get data about Watchlist stocks, and any searched Target stock.\\
+
+\subsection{League Manager}
+League Manager will proceed to keep up to date display of rankings of every
+player in each league. These will be fetched from a database and displayed
+in the Player Profile. League Manager will allow Investors to join open
+leagues that they are not already in. This will require querying the
+database and updating if necessary. League manager may give our achievements
+based on certain accomplishments within the leagues.\\
+
+\subsection{Yahoo! Finance API Adapter}
+Yahoo! Finance API provides the almost real time stock data that our
+application is dependent on. Any downtime Yahoo! Finance experiences
+will affect our application. Yahoo! Finance API Adaptor serves as a
+translation between the CSV file that Yahoo! Finance produces through
+their API, and our application. Our Adaptor will take the spreadsheet
+Yahoo! Produces and convert the data into syntax that our application
+can understand. This adaptor is modular in order to allow multiple
+subsystems to make queries for live stock updates.\\
+
+\subsection{Order System}
+Any order placed by an investor will go through the Order System which will
+sum the cost of the transaction and check that the account balance is satisfied.
+This will require communication with the Yahoo! Finance API Adaptor to get the
+current price of the target stock to be purchased/sold. If the order is a limit
+trade, we must define a way to check if the current price of the stock matches
+the limit price and execute the order.\\
+
+\subsection{Database Connection}
+We want to have a single subsystem maintain control of accessing the database
+to make retrieving information modular. This will allow expansion of the
+application to add additional functionality later which may also need access
+to the database. This should provide a layer of security so each subsystem does
+not access the database directly.\\
+
+
 % Preface the high-level organization of the domain
 \iffalse
 At its highest level, Capital Games consists of a few subsystems
@@ -14,7 +62,6 @@ subsystems can be identified by the purpose they serve in relation
 to the application. 
 
 % Concept Definitions
-\section{Concept Definitions}
 
 \subsection{Database}
 By its nature as a data-driven site, data persistence
