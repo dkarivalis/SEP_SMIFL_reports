@@ -196,25 +196,15 @@ Postconditions:       & -\textbf{Investor}'s portfolio is updated to reflect cha
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{User} selects the league in which they would like to place the order \\
-$\leftarrow$ & 2. \textbf{System} displays prompt for market order, including type, amount, and company \\
-$\rightarrow$ & 3. \textbf{User} fills out form and requests the order be placed \\
-$\leftarrow$ & 4. \textbf{System} (a) requests market price from \textbf{Yahoo! Finance} and (b) places the order into the \textbf{Database} \\
-$\leftarrow$ & 5. The order either resolves or expires, and the \textbf{System} updates the \textbf{User}'s position in the \textbf{Database} accordingly \\
-\hline
-\multicolumn{2}{|c|}{\color{color1}Flow of Events for Extensions (Alternate Scenarios):} \\
+
+$\rightarrow$ & 1. \textbf{Investor} navigates to their portfolio \\
+ $\leftarrow$ & 2. \textbf{System} requests users portfolio from \textbf{database}\\
+$\rightarrow$ & 3. \textbf{System} displays portfolio to \textbf{investor} \\
+$\rightarrow$ & 4. \textbf{Investor} adjusts their portfolio \\
+ $\leftarrow$ & 5. \textbf{System} updates the \textbf{database} \\
+ $\rightarrow$ & 6. \textbf{System} displays confirmation of portfolio update \\
 \hline
 
-\multicolumn{2}{|p{6.2in}|}{1a. The \textbf{User} chooses to place a market order from a company's profile rather than from the league page} \\
-\hline
-$\rightarrow$ & 1. The \textbf{User} selects which league in which to place the order  \\
-$\leftarrow$ & 2. The \textbf{System} takes the \textbf{User} to league marker order prompt as described in Step 2 above, with the prompt for company already filled out \\
-$\rightarrow$ & 3. Go to Step 3 above \\
-\hline
-\multicolumn{2}{|p{6.2in}|}{4a. The \textbf{User} does not have enough money or margin to place the order} \\
-\hline
-$\leftarrow$ & 1. \textbf{System} informs the \textbf{User} that they do not have enough money or margin to place the order and returns them to the market order prompt \\
-\hline 
 \end{longtable}
 \end{centering}
 
@@ -244,15 +234,25 @@ Postconditions:       & -\textbf{Database} us updated with the users position \\
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{User} selects a league member's profile \\
-$\leftarrow$ & 2. \textbf{System} requests that member's information from the \textbf{Database} and displays it in an organized and graphical manner to the \textbf{User} \\
+
+$\rightarrow$ & 1. \textbf{Investor} enters a market order \\
+$\leftarrow$ & 2. \textbf{System} attempts to get update from \textbf{Yahoo! Finance} \\
+$\leftarrow$ & 3. \textbf{System} receives information back from \textbf{Yahoo! Finance} \\
+$\leftarrow$ & 4. \textbf{System} validates and records trade in \textbf{database} \\
+$\rightarrow$ & 5. \textbf{System} confirms trades and displays changes in \textbf{investor}
+portfolio\\
 \hline
-\multicolumn{2}{|c|}{\color{color1}Flow of Events for Extensions (Alternate Scenarios):} \\
+
+\multicolumn{2}{|c|}{\color{color1}Flow of Events for Alternate Scenarios:} \\
 \hline
-\multicolumn{2}{|p{6.2in}|}{2a. \textbf{User} is viewing their own portfolio} \\
+
+\multicolumn{2}{|p{6.2in}|}{3a. \textbf{System} doesn't recieve information back from
+\textbf{Yahoo! Finance}} \\
 \hline
-$\leftarrow$ & 1. \textbf{System} gives the \textbf{User} options to place market orders related to their existing positions \\
+
+$\leftarrow$ & 4. \textbf{System} notifies \textbf{investor} of failed request \\
 \hline
+
 \end{longtable}
 \end{centering}
 
@@ -282,23 +282,22 @@ Postconditions:       & -Conflicts/Issues have been resolved \\
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{User} selects the tutorial option from the site's main page \\
-$\leftarrow$ & 2. \textbf{System} displays possible topics on which the \textbf{User} may be educated on \\
-$\rightarrow$ & 3. \textbf{User} selects topic \\
-$\leftarrow$ & 4. \textbf{System} presents an interactive tutorial to the \textbf{User}, which will be further elaborated upon in a later section \\
+
+$\rightarrow$ & 1. \textbf{Site Administrator} requests logs from \textbf{system} \\
+$\leftarrow$ & 2. \textbf{System} closes saves log file and returns log report \\
 \hline
+
 \end{longtable}
 \end{centering}
 
-In order to maintain a clean fantasy finance experience for our regular users, site
-administrators will reserve the ability to moderate other users--issuing warnings,
-suspensions, or even bans for abusive activity. To put it explicitly: \\
-
-\textbf{CG-BP04:} Site administrators will warn, suspend, or ban users for abusive
-activity--this includes aggressive behavior on league comments or user messages,
-spamming users, joining numerous leagues without active participation, and anything
-else that is deemed to harm the experience for other users. \\
-
+Depending on the specific role of the user. (I.e. investor, league manager), users should be
+able to customize several different items. That is, the league manager will have ultimate
+customization of the rules of his or her league, including but not limited to: victory
+conditions, achievements, and starting capital. These rules are to be established prior to
+the beginning of the league and not touched for the duration. League manager will also have a
+few other elevated privileges depending on whether he or she also falls into the investor role
+as well. Investors will be allowed to manage their own personal settings including but not
+limited to: email alerts, social media integration, and notifications.\\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced
@@ -319,12 +318,12 @@ Postconditions:       & -The \textbf{Database} is updated to reflect the chagnes
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{Site Administrator} selects the site administration page option from the main screen (only viewable by \textbf{Site Administrators}) \\
-$\leftarrow$ & 2. \textbf{System} makes a request to the \textbf{Database} and displays all outstanding abuse reports\\
-$\rightarrow$ & 3. \textbf{Site Administrator} (a) selects an abuse report, (b) reviews the report, and (c) selects what action is to be taken (if any)\\
-$\leftarrow$ & 4. \textbf{System} implements the action selected by the \textbf{Site Administrator} and updates the \textbf{Database} accordingly \\
-$\leftarrow$ & 5. \textbf{System} notifies the offending \textbf{User} of any actions taken against them \\
+
+$\rightarrow$ & 1. \textbf{League Manager} makes adjustment to league settings \\
+$\leftarrow$ & 2. \textbf{System} makes a update to the \textbf{Database} \\
+$\rightarrow$ & 3. \textbf{System} displays updated settings to the \textbf{league manager} \\
 \hline
+
 \end{longtable}
 \end{centering}
 
