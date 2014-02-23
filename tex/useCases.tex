@@ -2,38 +2,27 @@
 \label{useCases}
 
 \subsection{Preface}
-PLACEHOLDER TEXT:\\
 
-From our user stories, we have derived seven use cases to be fully elaborated upon.
-These use cases do not necessarily fully encompass all of the requirements for
-our application, but they touch upon the most important functionalities while also
-covering a breadth of different aspects. Justification for why each use case was
-included is written along with it. Another thing worth noting is that the browser is
-an actor in each of the use cases as it is the medium through which the user interacts
-with the system. As such, it will be included under the term "System" for the
-fully-dressed use cases to avoid redudancy and superfluous or wordy additions to the
-flow of each event. \\
+Users will have instant access to the functionality of the site as soon as they
+have created an account and logged in. That is, they can perform all of the functions
+that an investor can perform. They will also have the ability to choose to create or
+join a league, though they are not required to in order to experience the full
+functionality of the software. This will give our software a broader demographic
+when compared to that of years prior. That being said, league creation and
+administrative user delegation will be an important part of the functionality of
+the program and will be described its own use case. Core functionalities of respect
+user types will be elaborated below.\\
 
 \subsection{Fully-Dressed Use Cases}
-PLACEHOLDER TEXT:\\
 
-Before a user can participate in most of the functionality of our site, the user must
-first join or create a league. To the user, creating a league is very similar to
-joining a league, the notable differences being that the user becomes League Manager
-of a league that they create and then must also invite users to join said league.
-Therefore, we detail joining/creation as a single use case. User invitation, as a
-responsibility of the League Manager, will be explored in a later use case. One relevant
-aspect of the responsibily of a League Manager to the use case though, is whether a league
-is made public or private; that is, whether it shows up in a public league listing page or
-can only be joined by direct invitiation from the League Manager. Thus, our first use
-case involves a business policy: \\ \\
-
-\textbf{CG-BP01:} So that a user may create a join leagues with only their friends,
-leagues marked as private will not show up on the league listings unless a user is
-a current or pending member. \\
-
-Thus, a user will only be able to browse listings of public leagues or private
-leagues to which they have access. \\
+Having an account within our database is necessary for the user to experience
+functionality within the software. That being said, the user can create an account in
+different ways. They can choose to have the information imported by logging in through
+any OpenID/OAuth service service (eg: google, facebook, twitter, etc.) This will populate
+the database fields automatically with data driven from the external resources.
+Once the user has created an account, they can log in through OpenID/OAuth and will
+generally remain logged into the system as long as they remain logged into their service
+of their choice.\\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced
@@ -54,37 +43,32 @@ Postconditions:       & -The \textbf{Database} is updated with guests informatio
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{User} navigates to leagues listing page \\
-$\leftarrow$ & 2. \textbf{System} displays public and pending private leagues available for the \textbf{User}, sorted by date created \\
-$\rightarrow$ & 3. \textbf{User} selects join on a league in which they are interesting in joining and to which they have access \\
-$\leftarrow$ & 4. \textbf{System} authorizes user and registers \textbf{User} into that league, notifying \textbf{Database} to update to reflect this change \\
+$\rightarrow$ & 1. \textbf{Guest} navigates to Paramount Investment League and logs in \\
+ $\leftarrow$ & 2. \textbf{System} checks \textbf{database} for \textbf{investor} and
+isn't found\\
+ $\leftarrow$ & 3. \textbf{System} retrieves OpenID/OAuth info and registers guest
+in \textbf{database} as an \textbf{investor}\\
+$\rightarrow$ & 4. \textbf{System} sends out confimation to user and displays starter
+portfolio \\
 \hline
-\multicolumn{2}{|c|}{\color{color1}Flow of Events for Extensions (Alternate Scenarios):} \\
+\multicolumn{2}{|c|}{\color{color1}Flow of Events for Alternate Scenarios:} \\
 \hline
-\multicolumn{2}{|p{6.2in}|}{3a. The \textbf{user} selects create league rather than join league} \\
-\hline
-$\rightarrow$ & 1.  \textbf{User} inputs desired league name and settings \\
-$\leftarrow$ & 2. \textbf{System} (a) creates the league and inputs it to the \textbf{Database} and (b) registers the \textbf{User} into that league as \textbf{League Manager} \\
-\hline
-\multicolumn{2}{|p{6.2in}|}{4a. The \textbf{user} attempts to join or create a league without permission} \\
-\hline
-$\leftarrow$ & 1.  \textbf{System} rejects request and delivers reason for rejection \\
+$\rightarrow$ & 1.  \textbf{Investor} attempts to login  \\
+ $\leftarrow$ & 2. \textbf{System} checks \textbf{Database} and finds \textbf{investor}\\
+ $\leftarrow$ & 3. \textbf{System} loads \textbf{investor} info from \textbf{database} \\
+$\rightarrow$ & 4. \textbf{System} displays users portfolio \\
 \hline
 \end{longtable}
 \end{centering}
 
-It is important here to note another business policy of our site relevant to the user's
-experience: \\ \\
-
-\textbf{CG-BP02:} A user is able to join an unlimited number of leagues and become
-League Manager for as many leagues as the user wishes to create. \\
-
-Though the settings are selected when creating the league, any League Manager can change
-certain settings of their league at any time. These settings are comprehensive, including
-such items as name, privacy, number of spots, and duration. In addition, the League Manager
-can also manage members from the settings. However, certain settings cannot be
-changed after the league enters active competition, such as starting capital, commission
-rate, and margin, because changing primary competition rules mid-game would be unfair.\\
+Any user has the option at any time to create or join a league. The user who has requested
+to create a league will have elevated privileges versus a standard user. The league manager
+will be prompted to make a league with various setting options for victory condition, badges,
+achievements, etc. The league manager can also choose whether or not to make the league private.
+A private league will restrict users to those invited by the league manager, and will require
+a password to join. After initial setup, league managers will have minimal access to settings.
+That is, halfway through a league, the manager cannot decide to change the victory conditions.
+This prevents the league manager from abusing power to tip the scales in his or her favor.\\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3}
@@ -106,46 +90,41 @@ Postconditions:       & -The league is created with the appropriate settings or 
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{League Manager} selects the league settings option from the league page \\
-$\leftarrow$ & 2. \textbf{System} requests the current settings from the \textbf{Database} and presents them to the \textbf{League Manager} along with options to change select settings \\
-$\rightarrow$ & 3. \textbf{League Manager} updates the settings, such as privacy, league name, number of spots, and managing users \\
+
+$\rightarrow$ & 1. \textbf{Investor} navigates to and clicks on the create league dialogue. \\
+$\rightarrow$ & 2. \textbf{System} displays to the \textbf{Investor} the available options for
+creating a league.  \\
+$\rightarrow$ & 3. \textbf{Investor} updates the settings, such as privacy, league name, number of spots, and managing users \\
 $\leftarrow$ & 4. \textbf{System} sends the updated settings to the \textbf{Database} \\
+$\rightarrow$ & 5. \textbf{System} sends confimation to the \textbf{Investor} \\
 \hline
-\multicolumn{2}{|c|}{\color{color1}Flow of Events for Extensions (Alternate Scenarios):} \\
+
+\multicolumn{2}{|c|}{\color{color1}Flow of Events for Alternate Scenarios:} \\
 \hline
-\multicolumn{2}{|p{6.2in}|}{1a. The \textbf{User} selecting league settings is not the \textbf{League Manager}} \\
+
+\multicolumn{2}{|p{6.2in}|}{3a. The \textbf{Investor} selects league settings that are disallowed,
+such as a league name that already exists.} \\ \hline
+
+$\rightarrow$ & 4. \textbf{System} informs user what settings are incorrect.\\ \hline
+
+\multicolumn{2}{|p{6.2in}|}{\textbf{Investor} wishes to join a league} \\
 \hline
-$\leftarrow$ & 1. \textbf{System} requests the current settings from the \textbf{Database} and displays them, but does not provide ways to change them \\
-\hline
-\multicolumn{2}{|p{6.2in}|}{4a. The \textbf{League Manager} has altered the status of a league member} \\
-\hline
-$\leftarrow$ & 1. \textbf{System} will request the \textbf{Database} to update the \textbf{User}'s status in the league, be it becoming league manager or removing that \textbf{User}'s instance from this league (banned)\\
+
+$\rightarrow$ & 1. \textbf{Investor} navigates to league listing.\\
+$\leftarrow$ & 2. \textbf{System} updates \textbf{database} with \textbf{investors} info.\\
+$\rightarrow$ & 3. \textbf{System} confirms \textbf{investor} as part of league and displays
+league site.\\
 \hline
 \end{longtable}
 \end{centering}
 
-It is of some concern that League Managers may become abusive of their powers, and
-therefore it is important to create on a policy to explicitly state how this power
-is treated. In modern fantasy leagues (such as football, baseball, etc.), the
-League Manager does not typically have their power moderated, and this has not caused
-any problems in the success of these fantasy websites. The ability to leave a league
-and join another is left to the users if they feel that their league manager has become
-abusive. Their joining of the league acts as an implicit contract to accept of the
-League Manager's settings. However, if this League Manager becomes a problem and users
-bring it to an administrator's attention, disciplinary action may be taken. Thus we
-generate the next site policy:\\ \\
-
-\textbf{CG-BP03:} A League Manager is able to change the status of users in their league
-without moderation. However, if a League Manager is deemed abusive, a site administrator
-may take disciplinary action against them. \\
-
-Core to our site is the ability of the user to have access to information about companies
-so that the user may make informed decisions on how he would like to invest. As this is so
-crucial to the functionality of this project, it is absolutely necessary to make
-information easily available to the user and presented in a way that is clear and easy to
-understand. Therefore, the search of companies as mentioned in ST-3 should be simple to use
-and intuitive and the display of company profiles as mentioned in ST-4 should be such that
-a user can easily access any desired information about the company's financial performance. \\
+Users can view raw market data which will be pulled from Yahoo Finance in near real time.
+Users can view company data either on their own portfolio page or through the company’s
+specific info page. That is, the user can view detailed information of each stock or company
+before committing to a trade from a variety of sources. Users will be able to compare their
+portfolio’s performance to typical market trends from the Nasdaq, S\&P 500, and DJIA. There
+will also be a stock ticker ribbon on the bottom of the screen for users to receive constant
+real time feeds of most recent trades happening within the market.\\ \\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3}
@@ -162,36 +141,41 @@ Participating Actors: & Database, Yahoo! Finance \\
 Preconditions:        & -Yahoo! Finance is accepting inquiries \\
                       & -Investor is logged in \\
 Postconditions:       & -None worth mentioning \\
+
 \hline
 \multicolumn{2}{|c|}{\color{color1}Flow of Events for Main Success Scenario:}\\
 \hline
-$\rightarrow$ & 1. \textbf{User} begins entering a search term \\
-$\leftarrow$ & 2. \textbf{System} makes suggestions for companies in real-time \\
-$\rightarrow$ & 3. \textbf{User} enters search term or selects a suggestion \\
-$\leftarrow$ & 4. \textbf{System} (a) requests information from \textbf{Yahoo! Finance} and (b) displays the information to the user in a clear and interactive manner \\
+
+$\rightarrow$ & 1. \textbf{Investor} searches for a market term  \\
+ $\leftarrow$ & 2. \textbf{System} sends request to \textbf{database} \\
+$\rightarrow$ & 3. \textbf{System} returns suggested terms \\
+$\rightarrow$ & 4. \textbf{Investor} selects a term from suggested terms list and sends request \\
+$\leftarrow$ & 5. \textbf{System} sends request to \textbf{Yahoo! Finance} \\
+$\leftarrow$ & 6. \textbf{database} is updated. \\
 \hline
-\multicolumn{2}{|c|}{\color{color1}Flow of Events for Extensions (Alternate Scenarios):} \\
+
+\multicolumn{2}{|c|}{\color{color1}Flow of Events for Alternate Scenarios:} \\
 \hline
-\multicolumn{2}{|p{6.2in}|}{1a. The \textbf{User} selects a direct link to a company rather than enter a search term} \\
+
+\multicolumn{2}{|p{6.2in}|}{Search Fails} \\
 \hline
-$\leftarrow$ & 1.  Same as step 4 above \\
-\hline 
-\multicolumn{2}{|p{6.2in}|}{3a. The search term is invalid, i.e. the company does not exist} \\
+
+$\leftarrow$ & 6. \textbf{Yahoo! Finance} returns no results \\
+$\rightarrow$ & 7. \textbf{System} informs \textbf{investor} of search failure \\
+
 \hline
-$\leftarrow$ & 1.  System informs user company does not exist and offers similarly titled companies as links \\
-\hline
+
 \end{longtable}
 \end{centering}
 
-Note that the exact way in which the information requested from the Yahoo! Finance is
-displayed to the user is not specified in this use case. This will be described instead
-in later sections about on-screen appearance requirements as to try to separate the
-functionality of the site and design of the site as separate as possible. \\
-
-The goal of browsing companies ultimately is for the user to gain the knowledge needed to
-place market orders. Market orders are the atomic action of our site; i.e. the center
-point of every league is the user's ability to initiate transactions in an attempt to
-invest their money as best they can. \\
+User will be able to view all major items within their portfolio as well as place trades from
+their portfolio page. From this page, a user can view detailed analysis and graphs of each
+of their respective stocks as well as their current rank within their league (if applicable)
+and globally. Users will also be able to place trades for respective companies through their
+portfolio page. Users can buy, sell, short, or carry out any additional action on any stock
+or security within the limits of their finances and league settings through this page (See UC-5).
+Users will also be able to customize and change views as well as add stock index comparisons
+to monitor their success vs market success.\\
 
 \begin{centering}
 \label{UC-4}
@@ -234,9 +218,13 @@ $\leftarrow$ & 1. \textbf{System} informs the \textbf{User} that they do not hav
 \end{longtable}
 \end{centering}
 
-The potential kinds of orders referenced in the above use case are defined in the glossary. The details on the necessary computations to enact these orders will be defined in a section later on. \\
-
-In order to keep track of their own finances and any of their fellow league member's finances, a user must be able to view member portfolios. This keeps with the competitive nature of our site in addition to allowing the user to track their own progress. \\
+User should be able to place trades from various locations. That is, they may place it through
+their portfolio by typing in the ticker and quantity of shares. They may also navigate to a
+certain company’s page and elect to purchase shares there. Selling shares should be done
+through the user’s portfolio where they may see the exact quantity of shares of each respective
+companies they own. Error messages will be thrown and orders not processed should a user request
+to buy more shares of a company the he or she can afford or the user attempts to sell more than
+he or she has. Main transactions will occur through the user’s portfolio. \\ \\
 
 \begin{centering}
 \label{UC-5}
@@ -268,12 +256,13 @@ $\leftarrow$ & 1. \textbf{System} gives the \textbf{User} options to place marke
 \end{longtable}
 \end{centering}
 
-Once again, the exact display of information is not defined in the use case, but rather
-will be explored further in the section about user interface specifications. Next to
-discuss is the tutorial as referenced in ST-8. We consider this to be one of the main
-aspects that separates us from previous iterations of fantasy stock leagues; our site will
-educate users new to finance and enable them to learn all about the world of finance and
-how to invest, in addition to how to these subjects relate to the use of our site.\\
+Of the 3 user types, administrator is the highest and reserved only for developers and
+administrators of the software. Administrators have the ability to modify or delete leagues
+or specific users if the administrator feels that power is being abused. The administrator
+will also have elevated privileges to makes changes to the site. Their main purpose will be to
+suspend or ban users or leagues and ensure that the site is not being abused. This includes but
+is not limited to robot or AI users or user account spamming or advertising rather than trading
+properly. \\
 
 \begin{centering}
 \renewcommand\arraystretch{1.3} % Causes rows to be spaced

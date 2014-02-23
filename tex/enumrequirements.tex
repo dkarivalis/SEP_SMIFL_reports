@@ -2,6 +2,16 @@
 
 \section{User Stories}
 
+The user stories written and elaborated below demonstrate several particular instances and
+requirements for program functionality, as well as a weight to measure relative importance of
+each requirement. In particular these functions are not necessarily written in order of
+particular weight or functional precedence but are simply a list of end user story requirements
+and relative weighted importance. It is important to observe that these cases will be
+elaborated on and referenced in further sections of this document. The following are told
+from the perspective of the user from his or her view with the intention of fully encapsulating
+what he or she should expect to be able to see or do upon entering and regularly using the
+referenced software. \\
+
 \renewcommand\arraystretch{2}
 \begin{longtable}{|p{0.6in}|p{4.6in}|p{0.5in}|}
 \hline
@@ -62,7 +72,7 @@ I may share my fantasy league experience with friends.&1 pt   \\ \hline
 ST-16&As a league manager, I can add league rules, a league name, and a league
 logo to personalize my league.&8 pts  \\ \hline
 
-ST-17&As a league manager, I may invit I want to join,and assign.&8 pts
+ST-17&As a league manager, I may invit who I want to join.&8 pts
 \\ \hline
 
 ST-18&As a league manager, I can create league announcements.&4 pts  \\ \hline
@@ -78,5 +88,44 @@ active leagues, total leagues, quantity of daily transactions, the most/least
 popular stocks, and newly created so I may have reliable site statistics. &9 pts
 \\ \hline
 
+ST-22&As a league manager, I can choose the specific victory conditions for a particular
+game (eg: first to a certain capital, net gain, or overall gain within a time).
+As a user I can view this condition and my progress toward victory.&5 pts \\ \hline
+
 \end{longtable}
+
+The above requirements outline a general list of requirements which we expect to reflect the
+core functionality of our software (with higher weighted items acting as higher priority and
+being implemented first). The ultimate goal of the software is to simulate that of a real
+world stock market with users having the options to perform and carry out the important and
+basic trading actions. (See ST-6) We plan to add increased functionality when compared to years
+prior however with the addition of achievements, and varied victory conditions as well as
+increased leaderboard functionality. (See ST-7, ST-13, ST-22)   Notice that items such as
+administrative privileges as well as league creation and stock execution are prioritized
+substantially higher priority with relation to our newly added functionality. This is because
+the core functionality of the software is absolutely crucial to it working. We will expand on
+the core as well nonfunctional requirements. \\
+
+\subsection{Core requirements}
+
+These requirements are absolutely crucial to the viability and progression of the software.
+That is the user can create and log into an account on a daily basis. We will use a basic
+authentication system to implement this. Importantly the user will be able to access this
+UI on multiple different platforms to ensure complete and smooth transitional access to the
+system with zero down time. (ST-1, ST-2) \\
+
+The user will be able to access his or portfolio. (ST-6) From this portfolio, they can view
+their currently owned stocks as well as monitor the performance of their portfolio. They can
+view progress toward goal requirements and badges. (ST-8) From this location they can take
+action to buy and sell stock or perform short, stop, limits, etc. \\
+
+League managers will have access to a specific configuration setup where they can choose
+victory conditions, league settings, and monitor progress of investors within the league.
+This functionality is core to the formation of leagues within the game. (ST-3, ST-16)\\
+
+This project will NOT be its own market. In order to maintain the idea of perfect competition
+and unbiased market prices, all data will be taken from Yahoo! Finance to submit data and
+trades will be taken from here. This software is not intended to be a way for people to
+trade actual stock, rather just a resource for learning the market and tools of trade. \\
+
 
