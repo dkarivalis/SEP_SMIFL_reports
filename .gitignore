@@ -3,4 +3,6 @@
 *.toc
 *.log
 *.*.swp
+*.bbl
+*.blg
 koval.pdf
