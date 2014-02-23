@@ -218,6 +218,36 @@ online for this to work correctly. \\
 \end{longtable}
 \end{centering}
 
+At the Login View it is good to know if a Login attempt failed so we
+can display the correct information to the user. When a Login is
+successful the Account Controller will set the isLoggedIn attribute,
+then interacts with the DB Connection to retrieve all information to
+populate the Player Profile View’s attributes such as Name, OpenID,
+Account Summary, Owned Stocks, LeagueID’s, and rankings.\\
+
+At the Player Profile View the user may attempt a variation of things
+such as changing account settings, joining/creating a league, making
+an order, or viewing market data. The League Controller has attributes
+isInLeague so it knows how to update data for the Profile view. It also
+has attribute isCreatingLeague, to submit this data through the Database
+Connection after a successful league creation. \\
+
+The Player Profile View can also interact with the Order System Controller
+to view market data and place an order. The Order System Controller will
+use isValidValue to check if the account balance is sufficient to perform
+the operation. isValidStock checks to see if the symbol entered is a valid inquiry. \\
+
+
+Yahoo! Finance API Adaptor communicates between the Order System Controller
+and the Yahoo Finance Server to deliver information about a particular stock.
+retrieveData is the attribute to search a stock value and then return it to
+the Order System Controller to perform a useful operation on it.\\
+
+Database Connection has a retrieveData attribute to be able to read data
+from the database. There is also a writeData attribute to be able to store
+all information about the Players of the game.\\
+
+
 \newpage
 
 \section{Traceability Matrix}
