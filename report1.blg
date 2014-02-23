@@ -11,36 +11,37 @@ A level-1 auxiliary file: ./tex/domain.aux
 A level-1 auxiliary file: ./tex/planofwork.aux
 A level-1 auxiliary file: ./tex/managment.aux
 Database file #1: citations.bib
-You've used 5 entries,
+Warning--I didn't find a database entry for "wiki:open"
+You've used 10 entries,
             1876 wiz_defined-function locations,
-            507 strings with 4426 characters,
-and the built_in function-call counts, 682 in all, are:
-= -- 65
-> -- 20
+            523 strings with 4861 characters,
+and the built_in function-call counts, 1344 in all, are:
+= -- 130
+> -- 40
 < -- 0
-+ -- 10
-- -- 5
-* -- 22
-:= -- 106
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 5
++ -- 20
+- -- 10
+* -- 42
+:= -- 203
+add.period$ -- 20
+call.type$ -- 10
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 20
-empty$ -- 91
-format.name$ -- 5
-if$ -- 171
+cite$ -- 10
+duplicate$ -- 40
+empty$ -- 181
+format.name$ -- 10
+if$ -- 341
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 10
 missing$ -- 0
-newline$ -- 23
-num.names$ -- 5
-pop$ -- 35
+newline$ -- 43
+num.names$ -- 10
+pop$ -- 70
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 15
+skip$ -- 29
 stack$ -- 0
 substring$ -- 0
 swap$ -- 0
@@ -49,6 +50,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 5
-width$ -- 6
-write$ -- 47
+while$ -- 10
+width$ -- 12
+write$ -- 92
+(There was 1 warning)
