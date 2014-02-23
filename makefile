@@ -8,3 +8,5 @@ lab:
 
 clean:
 	rm *.log
+	rm *.aux
+	open report1.pdf
