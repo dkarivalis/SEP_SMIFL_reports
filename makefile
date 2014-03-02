@@ -1,12 +1,12 @@
 all: lab clean
 
 lab:
-	pdflatex report1.tex
-	bibtex report1.aux
-	pdflatex report1.tex
-	pdflatex report1.tex
+	pdflatex report2.tex
+	bibtex report2.aux
+	pdflatex report2.tex
+	pdflatex report2.tex
 
 clean:
 	rm *.log
 	rm *.aux
-	open report1.pdf
+	open report2.pdf
