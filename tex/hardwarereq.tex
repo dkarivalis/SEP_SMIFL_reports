@@ -1,0 +1,60 @@
+\section{Hardware Requirements}
+
+The hardware requirements on the server side are the main
+contribution to the operation of Paramount Investments League,
+leaving the client-side with minimal requirements. In fact,
+the only requirement of a client will that it runs a browser
+that is capable of running a modern web browswer.
+
+\subsection{Internet Connection}
+
+In order for Paramount Investments League to use any of its core
+functions (trading stocks, updating user portfolio, tracking
+administrative actions, etc.), an internet connection is required.
+Since most of the data being transferred is text (executable
+instructions), a low band of frequency is required. Note that a
+complete scalable analysis has not been performed on the system,
+so a low band of frequency is based off of the needs of the current
+website. For ideal performance, higher bandwidths of frequency
+should be used in order to reduce any overhead. A network
+connection between the server and the Yahoo Finance API is necessary
+during trade hours (9:30am - 4:00pm Monday through Friday), otherwise,
+no investors can perform a transaction.
+
+\subsection{Disk Space}
+
+The server must have adequate hard drive space to be able to
+store all of the database information. All data being stored
+is the sum of all program instructions for the system. 10 GB
+of storage space should be sufficient for the system.
+
+\subsection{System Memory}
+
+Since this system is in active development, there is limited
+concrete evidence that supports the overall performance of the
+system. The system will load copies of database stored information
+in order to operate over it. For better throughput, the memory
+should be managed using a Least Recently Used scheme (LRU) in
+order to keep the system memory populated with useful information.
+A LRU scheme will release any bits of memory that haven’t been
+accessed in a long time, and it will replace it with information
+that is used more often. Also, any operations used on loaded
+information will also use up system memory. A minimum of 512 MB
+should be used for testing our system. In addition, as our user
+based expands, it is obvious that the system memory will also
+have to grow with it.
+
+\subsection{Client-side Hardware Requirements}
+
+The core hardware requirement on the client-side of the system
+will be an internet connection. This is essential for the client
+to be able to remotely connect to the server in order to access
+the database. Without an internet connection, no client will be
+able to use a web browser to visit the Paramount Investments League
+website. In addition to an internet connection, and for a friendly
+user experience, anyone on the client-side should have a functional
+mouse and keyboard, as well as a graphic display to see their
+portfolio. To display the Paramount Investments League website,
+a screen with a minimum resolution of 800x600 pixels is adequate.
+
+

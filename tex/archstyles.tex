@@ -1,0 +1,83 @@
+\section{Architectural Styles}
+
+In order to make the most efficient use of our software, we
+will couple several known software tools and principles into
+our design. The follow architecture types will be expanded in
+detail to not only reflect general functionality, but also to
+reflect functionality of the software as a whole. As explained,
+each will play a crucial role in the success of our software and
+will be largely derived from the necessities of the software.
+That being said, architectural systems will include (and may be
+expanded upon in the future) the Model View Controller,
+Data-Centric Design, Client-Server access, and RESTful design,
+with each architecture serving a small part of the whole result.
+
+\subsection{Model-View-Controller}
+
+The Model View Controller is a User Interface implementation method
+which will separate the software into 3 specific groups; that is:
+the model, view, and controller subsections. The view category is
+typically limited to UI specific output, i.e. a webpage with stock
+information. That being said, the model remains the core component
+of the MVC method which holds all of the data, functions, and tools.
+The controller simply takes the input and converts it into a command
+for either the model or the view.\\
+
+The MVC method is ideal for this particular software because it allows
+the design to be broken down into smaller sub-problems. By splitting
+into 3 parts, we can separate UI functions, from database functions,
+and have all of them handled ultimately by the controller. Thus in
+terms of fluidity of the design, adding in the MVC allows each to be
+distinct and allows for the programming to be made far easier.
+
+\subsection{Data-Centric Design}
+
+Data is the fundamental backbone of Paramount investments.
+Stored within our database, will be numerous bouts of data,
+which will be necessary for all aspects of the software. The
+database needs to contain not only data pulled from the Yahoo!
+Finance API, but more importantly user specific data. Whenever
+the user logs in, they need to have access to a personal host of
+their own data. That includes but is not limited to complete
+portfolio, leagues, achievements, leaderboard, and settings.
+More importantly, the data needs to be stored in a way that it
+can be accessed by multiple subsystems whenever necessary. So
+in using this method, we can keep the data specific parts in the
+software abstract and easily accessible.
+
+\subsection{Client-Server Access}
+
+The user will be constantly interacting with the interface.
+All of the interactions are occurring, thus, on a client
+server basis. The user remains the primary client, and as
+such, constantly must interact with the other subsystems.
+All of the infrastructure provided by Paramount Investments
+will need to be accessed by the user. This ensures a smooth
+communication between each of the parts of the MVC and between
+client and infrastructure. Further, the infrastructure provided
+by Paramount investments will be able to access infrastructure
+of non-associative systems.
+
+\subsection{Representational State Transfer}
+
+As a software implementing a client server Access system,
+a REST system is also inherently implied. The RESTful design
+principles state that in addition to having a Client-Server
+Access system, the system has a scalability of components,
+that the interface is uniform, stateless, and cacheable.
+Using this method will employ a smooth, modular set of code.
+Using the interface specifications within the RESTful outline
+allows both the user and the designers to have streamline
+interactions with the interface. That is the user knows quite
+clearly what he or she is doing when say a link is clicked on
+a web page. The request is converted and sent out to the controller.\\
+
+Importantly, the RESTful implementation can be implemented on
+multiple levels. And as is desired, this system will be able to
+work on Android and iOS as well as through standard web interfaces.
+Thus a smooth transition between these mediums is incredibly
+important. Thus whether a user places an order on his cell phone
+or online, he should be able to experience a uniform experience
+across all mediums. Using the RESTful system will help in this process.
+
+
