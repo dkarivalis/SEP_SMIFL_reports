@@ -52,76 +52,103 @@ transition to Java is doable.\\
 
 \subsection{Database Manager}
  The tests listed below interact with our MySQL database, however they have no
- correlation to the implementation of the database.
+ correlation to the implementation of the database.\\
 
   \begin{enumerate}
   \item
-  Test Case Identifier TC-1:\\
+    \textbf{Test Case Identifier TC-1:}\\
+
     Function Tested: get player info(in user id : int) : class User\\
+
     Success/Fail Criteria – A successful test is one that retrieves information
     about the requested player.\\
 
-    \begin{tabular}{| c | c |}
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Information requested matches the search criteria.
     \\ \hline
     Call Function (Failure) & Information requested does not match the search
     criteria. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-2:\\
+    \textbf{Test Case Identifier TC-2:}\\
+
     Function Tested: update player info(in user id : int, in upd : class
         user):bool\\
+
     Success/Fail Criteria - A successful test is one that updates a player's
     information, whether it be an administrative action or game related.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Player's profile is updated with new information.
     A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & Player's profile is not affected after attempted
     update.  A value of false is returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+ 
+
   \item
-  Test Case Identifier TC-3:\\
+    \textbf{Test Case Identifier TC-3:}\\
+
     Function Tested: get order info(in transaction id : int):class transaction\\
+
     Success/Fail Criteria - A successful test is one that returns the
     information associated with a specific transaction.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Transaction information returned corresponds to
     transaction.id. \\ \hline
     Call Function (Failure) & Transaction information isn't returned to the
     user. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
+
   \item
-  Test Case Identifier TC-4:\\
-    Function Tested: update league(in leagueInfo : class league):bool
+    \textbf{Test Case Identifier TC-4:}\\
+
+    Function Tested: update league(in leagueInfo : class league):bool\\
+
     Success/Fail Criteria - This method is used when a league needs to be
     updated with the newest information provided.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & League information has been successfully updated.
     A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & League information has not changed from before.
     A value of false is returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
+
   \item
-  Test Case Identifier TC-5:\\
-    Function Tested: return league updates(in league id:int):class league
+    \textbf{Test Case Identifier TC-5:}\\
+
+    Function Tested: return league updates(in league id:int):class league\\
+
     Success/Fail Criteria - A successful test will return any league updates
     to the requested user.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & League updates are presented to the requesting
     user. \\ \hline
     Call Function (Failure) & No data is presented to the user after function
     call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \end{enumerate}
 
 \subsection{Order Manager}
@@ -132,61 +159,85 @@ system, as well as archiving old transactions in a table.\\
 
   \begin{enumerate}
   \item
-  Test Case Identifier TC-6:\\
+    \textbf{Test Case Identifier TC-6:}\\
+
     Function Tested:Check order(in symbols: class Order) : bool\\
+
     Success/Fail Criteria – A successful test will return a Boolean value of
     true corresponding to a valid user trade requests (buy, sell short, stop
     etc.).\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & User is able to perform a valid transaction.
     A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & User will be notified that he/she will not be
     able to perform a valid transaction. (Ex. Not enough funds in their account).
     A value of false is returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
+
   \item
-  Test Case Identifier TC-7:\\
+    \textbf{Test Case Identifier TC-7:}\\
+
     Function Tested: place order(in symbols: class Order) : bool\\
+
     Success/Fail Criteria - A successful test will allow the user to place a
     market order.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Market order is placed, and a confirmation is sent
     to user. A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & Market order is not placed, and the user will be
     notified. A value of false is returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
+
   \item
-  Test Case Identifier TC-8:\\
+    \textbf{Test Case Identifier TC-8:}\\
+
     Function Tested: delete order(in symbols: transaction id): bool\\
+
     Success/Fail Criteria - For a successful test, this method should delete an
     order from the system, assuming that it hasn’t already been processed. If it
     has then this function will return a false value.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Market order has been deleted from the queue. A
     value of true is returned after the function call. \\ \hline
     Call Function (Failure) & Market order has already been recorded, user will
     be notified of the invalid transaction. A value of false is returned after
     the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
+
   \item
-  Test Case Identifier TC-9:\\
+    \textbf{Test Case Identifier TC-9:}\\
+
     Function Tested: Execute order(in transaction id : int) : bool \\
-    Success/Fail Criteria - For a successful test, the system will obtain information from Yahoo! Finance and update a users portfolio accordingly.\\
-    \begin{tabular}{| c | c |}
+
+    Success/Fail Criteria - For a successful test, the system will obtain
+    information from Yahoo! Finance and update a users portfolio accordingly.\\
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & System retrieves data and updates the users
     portfolio. A value of true is returned after the function call.\\ \hline
     Call Function (Failure) & System either does not retrieve information from
     database and or the users portfolio is not updated. A value of false is
     returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+  
     \end{enumerate}
 
 \subsection{League Manager}
@@ -195,89 +246,119 @@ authority to create leagues, delete leagues, and modify leagues as it is
 instruction to do so.\\
 \begin{enumerate}
   \item
-  Test Case Identifier TC-10:\\
+    \textbf{Test Case Identifier TC-10:}\\
+
     Function Tested:Create league () : Class league\\
+
     Success/Fail Criteria - A successful test is when the user can create a
     league from scratch.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & User is now the league manager, and their new
     league is added to their list of current leagues. \\ \hline
     Call Function (Failure) & No new league is recorded in the system and the
     user will be notified that their attempt to create league has failed.
     \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+ 
+
   \item
-  Test Case Identifier TC-11:\\
+    \textbf{Test Case Identifier TC-11:}\\
+
     Function Tested: reaturn league updates(in league id:int):class league \\
+
     Success/Fail Criteria - A successful test will delete the selected league.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Selected league is deleted from the users’ list of
     league. A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & League will remain in the users’ list of league. A
     value of false is returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-12:\\
+    \textbf{Test Case Identifier TC-12:}\\
+
     Function Tested: change league name( in league id : int) : bool \\
+
     Success/Fail Criteria - A successful test will update the current league
     name with a modified one.\\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & League name has been changed and is reflected in
     the database. A value of true is returned after the function call. \\ \hline
     Call Function (Failure) & League name has remained unchanged. A value of
     false is returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-13:\\
+    \textbf{Test Case Identifier TC-13:}\\
+
     Function Tested: Change league manager (in league id : int, in usr : class
         User) : bool\\
+
     Success/Fail Criteria - A successful test will change the current league
     manager with the new input league manager. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) &League has a new manager, and all changes are
     reflected in database. A value of true is returned after the function call.
     \\ \hline
     Call Function (Failure) & League manager remains unchanged. A value of false
     is returned after the function call. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-14:\\
+    \textbf{Test Case Identifier TC-14:}\\
+
     Function Tested:add rules(in league id : int) : bool\\
+
     Success/Fail Criteria -A successful test will add a new rule to the list of
     league rules already established.  \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) &The newly added rule is reflected in the database.
     A value of true is returned after the function call.
     \\ \hline
     Call Function (Failure) & The new rule to be added has not been added, and
     the database sees no changes in the list of rules. A value of false is
     returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-15:\\
+    \textbf{Test Case Identifier TC-15:}\\
+
     Function Tested: Delete rules(in league id : int) : bool\\
+
     Success/Fail Criteria - A successful test will delete a rule in the
     leagues’ list of rules. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & The selected rule is deleted, and the database is
     updated of the change. A value of true is returned after the function call.
     \\ \hline
     Call Function (Failure) & The selected rule has not been removed and the
     database sees no changes. A value of false is returned after the function
     call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
   \end{enumerate}
 
 \subsection{Account Controller}
@@ -287,42 +368,55 @@ Functions include, adding, modifying, or deleting an account. \\
 
 \begin{enumerate}
   \item
-  Test Case Identifier TC-16:\\
+    \textbf{Test Case Identifier TC-16:}\\
+
     Function Tested: Login(in user id : int) : bool\\
+
     Success/Fail Criteria - A successful test will allow the user to visit their
     Paramount Investments League global portfolio. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & User is logged into the system and they can view
     their account. A value of true is returned after the function call.
     \\ \hline
     Call Function (Failure) & User is not logged into the website.  User may not
     have entered password correctly, or is not a registered user. A value of
     false is returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-17:\\
+    \textbf{Test Case Identifier TC-17:}\\
+
     Function Tested: logout(in user id : int) : bool \\
+
     Success/Fail Criteria - A successful test will all the user to logout of
     their Paramount Investments League account. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & User is logged into the system and they can view
     their account. A value of true is returned after the function call.
     \\ \hline
     Call Function (Failure) & User is not logged into the website.  User may not
     have entered password correctly, or is not a registered user. A value of
     false is returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-18:\\
+    \textbf{Test Case Identifier TC-18:}\\
+
     Function Tested: Create account() : class User \\
+
     Success/Fail Criteria - A successful test will create a new user account. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & A former visitor to the Paramount Investments
     League website will now be a registered investor.  A value of true is
     returned after the function call.
@@ -330,15 +424,20 @@ Functions include, adding, modifying, or deleting an account. \\
     Call Function (Failure) & The request to make a new account has failed, and
     no new account will be reflected in the database. A value of false is
     returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-19:\\
+    \textbf{Test Case Identifier TC-19:}\\
+
     Function Tested: delete account(in user id : int) : bool \\
+
     Success/Fail Criteria - A successful test will delete the selected user
     account. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & An investor chooses to delete their account, and
     all portfolios will be deleted from the database.  A value of true is
     returned after the function call.
@@ -346,7 +445,8 @@ Functions include, adding, modifying, or deleting an account. \\
     Call Function (Failure) & The selected account remains in the system, the
     database doesn’t lose the association with that user. A value of false is
     returned after the function call.\\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
 
 \end{enumerate}
 
@@ -358,29 +458,37 @@ sector information.\\
 
 \begin{enumerate}
   \item
-  Test Case Identifier TC-20:\\
+    \textbf{Test Case Identifier TC-20:}\\
+
     Function Tested: Get quote(in stock ticker id : string) : class quote \\
+
     Success/Fail Criteria - A successful test will return the requested quote
     (stock) information to the user. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Quote information is presented to the user. System
     requests to access information from Yahoo! Finance.
     \\ \hline
     Call Function (Failure) & Quote information request does not go through and
     the user is notified of the error. System was not able to communicate with
     Yahoo! Finance. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
   \item
-  Test Case Identifier TC-21:\\
+    \textbf{Test Case Identifier TC-21:}\\
+
     Function Tested: get company info(in stock ticker id : string) : class
     Company \\
+
     Success/Fail Criteria - A successful test will return the company
     information that the user requested. \\
-    \begin{tabular}{| c | c |}
+
+    \begin{longtable}{|p{2in}|p{4.5in}|}
     \hline
-    \textbf{Test Procedure:} & \textbf{Expected Results} \\ \hline
+    {\large \color{color1}Test Procedure:}&{\large \color{color1}Expected Results}\\ \hline
     Call Function (Success) & Company information is presented to the user.
     System can access company information from either database or link the user
     to the requested company’s website.
@@ -388,76 +496,39 @@ sector information.\\
     Call Function (Failure) & Company information is not presented to the user.
     System failed to retrieve information from the database, or the company
     page link is invalid. \\ \hline
-    \end{tabular}
+    \end{longtable}
+    \vspace{5mm}
+
 \end{enumerate}
-\subsection{Database Models}
 
-Because of the data-centric design of Capital Games, protecting 
-the integrity of the database entries is of the utmost importance. 
-The Ruby on Rails framework has safeguards and validation for this 
-purpose, but we still need to thoroughly unit test each of the 
-models to ensure that only permissible combinations of attributes 
-are able to be entered, and that proper error handling occurs to 
-resolve attempts at improper attribute definition.
-
-\subsection{Queueing System}
-
-Capital Games heavily relies upon the queueing system to act as a 
-computational highway for all asynchronous tasks.  Due to the 
-nature of this system we must prepare for race conditions; the 
-different ways our data can be effected based upon the order of 
-executing processes that are acting upon the queue. We will need 
-to prepare a set of tests to express how the queue performs when 
-open orders are altered by other processes during different phases 
-of the queueing system. Based on our test results it might be 
-necessary to implement data locking.
-
-\subsection{Finance Adapter}
-
-Whenever using external resources it is vital to understand the 
-different ways in which they communicate not just when functioning 
-as expected, but also when failing to perform properly.  Since we 
-do not have the ability to shut down the external Financial 
-Adapter's Servers we can not run tests that give us feedback on 
-what functionality to expect on failure.  This leaves us without 
-the ability to test the Financial Adapter and instead pro-actively 
-safeguard against failure. Due to this we must build a wrapper that 
-anticipates all perceivable failures coming from the Financial Adapter.
 
 % Describe the test coverage
 \section{Test Coverage}
 
-In order to attain full functionality of Capital Games without bugs, 
-we must be sure that none of its parts have errors themselves.  Due 
-to many dependencies such as other running processes, system states, 
-and transitions, the same test will need to be preformed for each 
-possible configuration to make sure that each part works in every 
-possible scenario that it can be ran. This will require extending 
-certain tests to run at the same time as background processes, and 
-having parts called from all possible initiating parts. When working 
-with integrated parts it is not simply enough to assume that parts 
-will work once integrated just because they work independently. By 
-extensively testing each possible run case we ensure that there are 
-no points of failure once the system is launched.
+The ideal test coverage would be to have a test that covers every edge case of
+every method.  This is not only not feasible, it is impossible since it is not
+possible to actually know all the edge cases.  Because of this we plan to test
+core functionality to provide a core amount of testing.  Then through the use
+of alpha and beta build interactions with end users, we will be able to identify
+ways that user interact with the system that were not foreseen. We can then add
+additional testing to cover these new edge and use cases which will also help
+debug and prevent regression in the future.\\
+
 
 
 % Describe integration testing strategy
 \section{Integration Testing}
 
-In order to achieve the most thorough testing, Capital Games will be 
-tested using the bottom-up strategy. Each part of Capital Games that 
-we wrote will be extensively tested individually first. However 
-simply testing each part individually is not enough due to race 
-conditions and other integration issues that may exist in the 
-systems described above. Because of this, parts must be tested after 
-integration as well.  Knowing that functionality is state specific 
-and transition specific for any state machine, each test must also be 
-ran in all possible states. In addition to all previously listed 
-conditions, tests need to be preformed at different times to make sure 
-that functionality during backend asynchronous tasks do not have any 
-bugs. We have chosen the bottom-up testing strategy based on the 
-principle that bugs at the bottom level will dictate bugs at the 
-top level, while bugs at the top level may very well be independent 
-of bottom level performance. By carefully analyzing every part to part 
-integration we can work our way up to a flawless design.
-
+Integration testing will be done on a local developer machine by emulating the
+server environment.  The system may not go live until the current system works
+in the integration environment.  We accomplish this by having two branches of
+source code, master and dev.  dev is the branch that all new work will be done
+on.  From there, it will be pulled down into the local integration machine,
+tested and debugged.  Once the system has been debugged, being sure to keep
+1detailed logs of any system config changes needed, the source code will be
+pushed to master.  Once pushed to master, any system config changes will be made
+on the production server in order to accomodate the new branch.  Once those changes
+are made, master will be pulled into the production machine and a second round of
+integration testing will begin by launching the service on a developer port.
+If it passes all the tests, then the developer port will be shut down, and the
+system will relaunch the website on the normal http port.\\
