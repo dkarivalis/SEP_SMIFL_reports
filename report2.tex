@@ -5,14 +5,19 @@
 \usepackage{smiflstyle}
 \usepackage{indentfirst}
 \usepackage{float}
+\usepackage[noline,noend,ruled,linesnumbered]{algorithm2e}
+\usepackage{algpseudocode}
+
 
 % Include Title page
+% Complete
 \include{./tex/title2}
 
 \begin{document}
 \titleGM
 
 % Revisions Page
+% Complete
 \include{./tex/revisionHistory2}
 
 
@@ -20,21 +25,26 @@
 
 % Chapter 7
 % Interaction Diagrams
+% Not Complete
 \include{./tex/interactionDiagrams}
 
 % Chapter 8
 % Class Diagrams and interface Spec
+% Need first diagram digitized, o/w Complete
 \include{./tex/classDiagram}
 
 % Chapter 9
 % Sys Arch and System Design
+% Complete
 \include{./tex/sysarch}
 
-\iffalse
+
 % Chapter 10
 % Data structures used
+% Complete
 \include{./tex/datastruct}
 
+\iffalse
 % Chapter 11
 % User Interface Design & Implementation
 % we haven't changed anything so I guess leave empty?
