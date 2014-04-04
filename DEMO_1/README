@@ -10,7 +10,7 @@ zipped folder.  README.md is a github specific file, you want README.
 If you have any questions, please feel free to email david.patrzeba@gmail.com
 
 Please note that our application is difficult to set up since it is a fairly
-complicated systen, that is we really on the Play Framework (MVC framework),
+complicated system; that is we rely on the Play Framework (MVC framework),
 MySQL DB, EBean ORM, SecureSocial, system global ENV variables, etc.
 
 This application is not designed to be run natively, rather, we have designed it
