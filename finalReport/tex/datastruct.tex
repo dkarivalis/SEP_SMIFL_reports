@@ -1,0 +1,111 @@
+
+\chapter{Data Structures \& Algorithms}
+
+% In the DB we use tables because...
+\section{Data Structures}
+
+In the implementation of the system at Paramount Investments League, there will
+be 3 main data structures in use.  These 3 data structures are a Queue,
+ArrayList, and the HashMap.
+
+\subsection{Queue}
+The system at Paramount Investments league uses a queue data structure to
+hold all the orders/transactions that users may place during in the system
+during the day.  Because of the FIFO (First in First out) property of the queue
+the orders that were placed first will the ones that are executed/processed
+first.  This mimics the real world scenarios and will help capture part of the
+essence of stock market trading.  At this stage in the implementation, we will
+be trying to accomplish this using the interface provided to use by the Queue
+Interface in Java.  One of the requirements we require of this queue is that it
+be thread safe since there can be multiple users placing their orders at the
+same time into the same queue.  If we find that there is a space limitation or
+lack of thread synchronization of this queue implementation, we will make an
+attempt to code the queue ourselves.
+
+\subsection{ArrayList}
+The system at Paramount Investments league will also be using an array data
+structure to keep track of the positions that an investor might have in a single
+stock.  In most case, investors will have only one position per stock but there
+are scenarios where this is not true and the investor may have more than one
+position in a single stock.  Because we are unsure of how many positions the
+investor might want, we need to be able to account for this using a data
+structure that has quick random reads but also has the capability to grow in
+size without restriction.  This is achieved using the ArrayList class provided
+in Java.  The ArrayList class has random read capability just like an array, but
+it also has the capability to grow indefinitely just like a linked list.  Hence
+we will be using the ArrayList to keep track of the positions per stock.
+
+\subsection{HashMap}
+The system at Paramount Investments League will be using a HashMap to keep track
+of all the stocks that a user chooses to invest in for a given portfolio.  This
+data structure needs to have quick insertion, delete, and read times.  We chose
+the HashMap to accomplish this task because of the speed at which it is
+possible to insert, delete, and access information in a HashMap.  Because there
+are hundreds of different stocks, quick access to information is a necessity.
+We plan to accomplish this task using the HashMap class in Java.
+
+\section{Algorithms}
+
+At the time of this report there is only one interesting algorithm that has been
+designed and implemented.  We expect as the project progress for this section
+to flesh out more and more, and include additional algorithms.
+
+\subsection{A Method For Reducing API Calls in a Highly Concurrent Environment}
+
+Our system relies on external API's\cite{wiki:api} in order to accomplish the
+most central tasks, namely retrieving up-to-date stock data.  Since we are using
+a free API, their are limits to the number of times that we can request
+information from the API without having our IP address\cite{wiki:ip} blocked.
+In order to limit the number of calls that are made, we need to cache the
+results on our servers.\\
+
+In order to accomplish this we wrote a service that is concurrent and maintains
+a cache of stocks values on our server updating them periodically.  Here is a
+brief overview of the algorithm:\\
+
+\begin{algorithm}[H]
+  \caption { Retrieve and Cache Stock Values }
+$stockTicker \leftarrow$ End user does an operation that requires a stock value\;
+$stock \leftarrow HashMap.get(stockTicker)$\;
+\If { stock exists }
+{
+  \Return $stock$\;
+}
+Synchronize\;
+\If { stock exists }
+{
+  \Return $stock$\;
+}
+$stockValues \leftarrow YahooAPICall(stockTicker)$\;
+$stock \leftarrow new Stock(stockValues)$\;
+$HashMap.put(stockTicker, stock)$\;
+\Return Stock\;
+\end{algorithm}
+
+\vspace{5mm}
+
+In order to make the above algorithm work in a Concurrent environment, we
+synchronize\cite{wiki:sync} it in the critical section, that is, we only allow
+one user at a time to add something to the HashMap.\\
+
+\subsection{A Method For Invalidating and Updating an In Memory Data Structure in
+a Highly Concurrent Environment}
+
+In order to update the HashMap periodically, we run a background thread that
+sleeps for some defined amount of time, then runs.  This background process,
+builds an entirely new HashMap, and once complete, replaces the out of date
+HashMap.\\
+
+\begin{algorithm}[H]
+  \caption { Update In Memory Data Structure }
+$newStructure \leftarrow$ generate a new empty data structure\;
+$oldStructure \leftarrow$ get a reference to the old structure\;
+\For {every object o : oldStructure}
+{
+  $newStructure.add(o.update())$\;
+}
+$oldStructure = newStructure$\;
+\end{algorithm}
+
+\vspace{5mm}
+

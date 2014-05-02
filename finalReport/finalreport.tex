@@ -1,0 +1,94 @@
+% Author: David L Patrzeba
+% Team 1 Software Engineering
+
+\documentclass[11pt,letterpaper,oneside]{memoir}
+\usepackage{smiflstyle}
+
+% Include Title page
+% Complete
+\include{./tex/title} %done
+
+\begin{document}
+\titleGM
+
+% Revisions Page
+% Complete
+\include{./tex/revisionHistory} %done
+
+\tableofcontents % create TOC
+\pagebreak
+
+% Chapter 1
+% Include Customer Statement of Requirements
+\include{./tex/custStmntofRqrmnts}
+
+% Input Glossary
+\input{./tex/glossary}
+
+% Chapter 2
+% Include System Enumerated Requirements
+\input{./tex/enumrequirements}
+
+% Include FURPS
+\input{./tex/furps}
+
+% Input On Screen Appearance Requirements
+\input{./tex/onscreen}
+
+% Chapter 3
+% Include Functional Requirements Spec
+\include{./tex/functionalRequirements}
+
+% Chapter 4
+% Include UI Specification
+\include{./tex/uispec}
+
+% Chapter 5
+% Effort Estimation ***New***
+%\include{./tex/effortestimation}
+
+% Chapter 6
+% Domain Analysis
+\include{./tex/domain}
+\input{./tex/opcontracts}
+\input{./tex/econmodels}
+
+% Chapter 7
+% Interaction Diagrams
+%\include{./tex/interactiondiagrams}
+
+% Chapter 8
+% Class Diagrams and interface Specification
+
+% Not needed in Report 3.1
+%\include{./tex/classdiagram}
+
+% Chapter 9
+% System Architecture and System Design
+\include{./tex/sysarch}
+
+% Chapter 10
+% Data structures used
+\include{./tex/datastruct}
+
+% Chapter 11
+% User Interface Design & Implementation
+
+% Not needed in Report 3.1
+%\include{./tex/uiimplementation}
+
+% Chapter 12
+% Design of Tests
+
+% Not needed in Report 3.1
+\include{./tex/testdesign}
+
+%Chapter 13
+%Project Management
+%This includes coordination, how the team divided up work, etc..
+\include{./tex/management}
+
+% References
+\bibliography{citations}
+
+\end{document}

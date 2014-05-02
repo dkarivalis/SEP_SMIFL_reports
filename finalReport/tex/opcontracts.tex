@@ -1,0 +1,107 @@
+\section{System Operation Contracts}
+
+% "Should be provided only for the operations of the fully-dressed
+% use cases elaborated on in Section 3c for the operations identified
+% in section 3d". 
+% So not sure what to do about this...
+
+
+\textbf{UC-1 Register/Create an Account}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+		\item (join) If a new user is visiting the Paramount Investments League website (guest), they must first register with either OpenID/OAuth2 account before joining/creating a league with Paramounts Investments.
+        \end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+		\item After registration, the database is updated and logs the once previous guest, as an investor of Paramount Investments League.		
+        \end{itemize}
+\end{itemize}
+
+\textbf{UC-2 Create/Join League}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item Investor must be logged into the Paramount Investments League website.
+\item No more than one instance of the same League name can exist.
+\item User hasn’t joined a league yet.
+				\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+\item Investor has joined a league
+\item Database has been updated
+\item League has been set with selected settings.
+			\end{itemize}
+\end{itemize}
+
+\textbf{UC-3 View Market Data}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item Investor is logged in
+\item Yahoo Finance is accepting inquiries.
+			\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+		\item Query Stock Market Data
+		\end{itemize}
+\end{itemize}
+
+\textbf{UC-4 Manage Portfolio}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item User is logged into their Paramount Investments League account. 
+\item Yahoo Finance is accepting inquiries. 
+		\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+\item Any adjustments made to the investors portfolio have been updated in the database.
+\end{itemize}
+\end{itemize}
+
+\textbf{UC-5 Place a Market Order}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item User is logged into their Paramount Investments League account. 
+\item Investor has enough funds in their account to place a market order
+\item Yahoo Finance is accepting inquiries. 
+
+		\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+\item User profile is reflected with any change to funds or position.
+\item Database has been updated with these changes.
+		\end{itemize}
+\end{itemize}
+
+\textbf{UC-6 Take Administrative Actions}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item User is the site administrator
+\item An issue/conflict occurs and needs to be resolved.
+\item There are outstanding abuse reports.
+		\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+\item Conflicts/Issues have been resolved
+\item The reported user has been notified of any actions taken against them.
+		\end{itemize}
+\end{itemize}
+
+\textbf{UC-7 Manage League Setting}
+\begin{itemize}
+	\item \emph{Preconditions}
+		\begin{itemize}
+\item Initiating actor is the league manager. 
+\item League Manager is logged into their Paramount Investments League account.
+		\end{itemize}
+	\item \emph{Postconditions}
+		\begin{itemize}
+
+\item Database is updated to reflect any changes  made to their account.
+\item All users are notified of any changes made in their league. 
+		\end{itemize}
+\end{itemize}

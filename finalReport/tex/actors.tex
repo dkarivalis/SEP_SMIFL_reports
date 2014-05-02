@@ -1,0 +1,68 @@
+
+\subsection{Investor}
+A user who has an account in our servers and is logged in to their account. These will be regarded as our primary stakeholders.\cite{wiki:Stakeholder}
+\begin{itemize}
+\item[--] Research the latest updates in the market
+\item[--] View their portfolio
+\item[--] Execute orders of any kind
+\item[--] Join/create a league
+\item[--] Take part in competitions
+\end{itemize}
+
+\subsection{Guest}
+A visitor to the website who has either not logged in or just a simple visitor. Visitors will be regarded as secondary stakeholders.\cite{wiki:Stakeholder}
+\begin{itemize}
+\item[--] Register and create an account using OpenID/OAuth2
+\item[--] View the latest trades
+\end{itemize}
+
+\subsection{Administrator}
+Also referred to as an Admin, is the person in charge of managing the operation of their respective field. For instance, a League admin is in charge of maintaining league settings. 
+
+\subsubsection{League Administrator}
+Manages the leagues that they have created
+\begin{itemize}
+\item[--] Can set league to be public/private
+\item[--] Set the rules for the league
+\end{itemize}
+
+\subsubsection{Site Administrator}
+Manages the overall website
+\begin{itemize}
+\item[--] Ensure fair competition between leagues/players
+\end{itemize}
+
+\subsection{Database System}
+Holds the information for the accounts of all users
+\begin{itemize}
+\item[--] Insert information as accounts are created
+\item[--] Push data back to views about users/events
+\item[--] Store new data about about users/events
+\end{itemize}
+
+\subsection{Financial API}
+Gives the stocks in our database up to date prices
+\begin{itemize}
+\item[--] Fetch real world information and update our database accordingly
+\end{itemize}
+
+\subsection{Browser}
+The middleman between user and system
+\begin{itemize}
+\item[--] Present data to the user
+\item[--] Retrieve data from the user
+\end{itemize}
+
+\subsection{Yahoo! Finance}
+The unit that knows about current financial statistics
+\begin{itemize}
+\item[--] Retrieve data about stocks
+\end{itemize}
+
+\subsection{Queueing System}
+A subsystem for scheduling orders so as not to block user
+interactions.
+\begin{itemize}
+\item[--] Place orders to be executed or canceled asynchronously
+\item[--] Schedule events and mailings for system
+\end{itemize}

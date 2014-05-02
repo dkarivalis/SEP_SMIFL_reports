@@ -1,0 +1,38 @@
+\section{Persistent Data Storage}
+
+The plan for data storage exists at the core of Paramount
+Investments. Since so much of our software depends on
+properly developed and updated data, it is of the utmost
+important that our database schema represent accurately all
+objects involved. That is, the data must accurately (at all
+times) reflect all relevant user data, stock information,
+ticker variables, league settings, achievements, leaderboards,
+and all other relevant objects.\\
+
+Paramount Investments will make heavy use of the relational
+database MySQL. Relational databases are far more practical
+for the needs of this particular software. That is, relational
+databases consist of several indexed tables filled with
+various object attributes. As can be viewed in the class
+diagrams on the previous page, this is necessary for the
+large quantity of objects which will be present in the
+software. Tables will need to exist not only for user data
+and settings such as log in and league profiles, but also
+for stock and portfolio information. Further, these databases
+need to be constantly written and rewritten to ensure
+constantly updated and accurate information. Items such
+as leaderboards, and information which will be able to be
+viewed on each user’s portfolio need to constantly reflect
+accurate data.\\
+
+The data will be retrieved from the respective database table
+in the form of a query. When a user inputs a command to retrieve
+data, a query must be placed, the table searched, and the eventual
+correct data value (or values) returned. For example if a user
+requests his or her settings, it can query currently selected
+settings and return those values to the UI and to the user. If
+the user elects to make a change this will be sent back to the
+database, updated and saved for further access later. The same
+process can be mirrored and applied to all facets of the software.
+Several tables will be used for varying data as has been outlined in the diagrams above. The success of the software is dependent on the values being returned accurately and in the most updated form at all times. Because of that, the database must receive a regular feed from the Yahoo! Finance API in order to constantly update and reflect data when queries are placed. In doing so, users will have constantly accurate views of their portfolio performance, leaderboards, achievements, stock tickers, and recent trades going on throughout the league and entire user base. It is in this way that the Paramount Investment software will distinguish itself from others and retain functionality and efficient realization of its ultimate goals and requirements.
+

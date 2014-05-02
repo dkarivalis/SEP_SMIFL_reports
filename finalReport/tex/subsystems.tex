@@ -1,0 +1,49 @@
+\section{Identifying Subsystems}
+
+Paramount investments aims to set its platform on multiple interfaces.
+As such, subsystem identification becomes an integral part of initial
+analysis of the software. On a thick layer, our platform exists with
+a front-end system and a back-end system. But on a much deeper level,
+we can see that, each of these subsystems can be broken down into
+still greater detail. Front end systems typically involve user
+interface, and object interactions with the user. Back-end will refer
+to all database schema, implementation and interactions with relevant
+hardware. Also included are non-associative items which are necessary
+to the success of our system.\\
+
+Front-end systems are formally plain. The user interface which displays
+views and specific data to the user on multiple platform is included
+here. That is, it will contain different mappings and specific
+implementations for iOS and Android as well as natively for the Web.
+The front-end system will have to maintain constant communication
+with the back-end system to maintain consistency and retrieve data
+regularly. It needs to be able to successfully communicate information
+from commands given by the user and communicate them to the back end.
+The back end system will retrieve necessary data and information and
+return the data to the UI and user to project the page or information
+requested.\\
+
+Our back end system will be broken down further and is easily
+considered the most important part of our infrastructure. Since
+we are using the MVC framework, the back end system is to be broken
+down into controller and database subsystems. Additionally, we will
+have the financial retrieval system and queuing systems as previously
+outline. Thus, the bulk of the command processing is handled by our
+back-end subsystem.  The back-end system must not only communicate
+among the subsystems within itself, but it must also communicate with
+the front-end UI system to respond to commands and also communicate
+with the non-associate systems as well.\\
+
+Breaking down the subsystem further, we highlight the importance
+of the financial retrieval system, and the queue system. The
+financial retrieval system will communicate with Yahoo! Finance
+to retrieve relevant information as requested by the controller
+(whenever the controller receives an input from the front-end user).
+The queuing system will handle other processes and largely
+communication with non-associative systems. It will also be
+involved in queuing and handling all back-end processes and
+monitors to ensure that the correct commands are processed at the
+correct time. The success of these modules, the success of the entire
+back-end system, and the success of communication amongst the
+systems will be crucial for the overall success of the software.
+

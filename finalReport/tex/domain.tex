@@ -1,0 +1,650 @@
+\chapter{Domain Model}
+
+\section{Concept Definitions}
+
+The Domain Model Concepts are derived from responsibilities contained in the
+Use Cases from Chapter 3.
+
+
+
+\begin{centering}
+\renewcommand\arraystretch{1.3}
+\label{UC-3}
+\begin{longtable}{|p{4in}| p{.4in}| p{1.5in} |}
+\hline
+\bfseries{\color{color1}Responsibility} &
+          \bfseries{\color{color1}Type} &
+          \bfseries{\color{color1}Concept} \\ \hline
+          \textbf{R1}:Allow new user to create an account to partake in stock trading game
+          as an Investor. And Login existing user. &
+                                                 D & Account Controller \\ \hline
+
+          \textbf{R2}: Initialize accounts with fixed amount of capital. &
+                     D & Account Controller \\ \hline
+          \textbf{R3}: Check if Investor is in a league or not. & K & League Controller \\ \hline
+          \textbf{R4}: Update new leagues at set interval and display to correct Investors. & K
+                                             & League Controller \\ \hline
+          \textbf{R5}: Retrieve information about Stocks, Trades, and Companies. & K
+                                             & Yahoo! Finanace Adapter \\ \hline
+          \textbf{R6}: Display information about user’s Stocks, Trades and Leagues & K
+                                             & Player Profile View \\ \hline
+           \textbf{R7}: Record and Execute Buy/Sell/Short Stock trades & D
+                                              & Order System Controller \\ \hline
+          \textbf{R8}: Display Welcome screen to create an account or log-in. & K &
+                                                Login View \\ \hline
+
+\end{longtable}
+\end{centering}
+
+\pagebreak
+\subsection {Domain Diagram}
+The shown figure (our domain model) illustrates how our system is broken down into different subsystems and how they interact with each other. Each box represents an entity in our system and each arrow represents a function that allows the entity to communicate with other entries in the system.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.5in]{./img/domModel.jpg}
+\caption{The domain model.}
+\end{figure}
+
+\subsection{Account Controller}
+The first step for anyone using this system is to gain access by creating an Account.
+Account Creator is an interface that allows a player to create a new Investor account.
+It will check with the database for an account with the same details, and if not found
+it will proceed to create the account and store the details into the database.\\
+
+\subsection{Player Profile View}
+The Player Profile displays statistics and saved settings for the user that logs
+into The Paramount Investments League. Player Profile should query Yahoo! Finance
+Adaptor API to get data about Watchlist stocks, and any searched Target stock.\\
+
+\subsection{Login View}
+The Login View displays a UI to allow the user to login with OpenID. This will send
+a request to the account controller. If it fails the Login View will be updated to
+reflect this. If this succeeds the user will now see the Player Profile View.\\
+
+\subsection{League Controller}
+League Manager will proceed to keep up to date display of rankings of every
+player in each league. These will be fetched from a database and displayed
+in the Player Profile. League Manager will allow Investors to join open
+leagues that they are not already in. This will require querying the
+database and updating if necessary. League manager may give our achievements
+based on certain accomplishments within the leagues.\\
+
+\subsection{Yahoo! Finance API Adapter}
+Yahoo! Finance API provides the almost real time stock data that our
+application is dependent on. Any downtime Yahoo! Finance experiences
+will affect our application. Yahoo! Finance API Adaptor serves as a
+translation between the CSV file that Yahoo! Finance produces through
+their API, and our application. Our Adaptor will take the spreadsheet
+Yahoo! Produces and convert the data into syntax that our application
+can understand. This adaptor is modular in order to allow multiple
+subsystems to make queries for live stock updates.\\
+
+\subsection{Order System Controller}
+Any order placed by an investor will go through the Order System which will
+sum the cost of the transaction and check that the account balance is satisfied.
+This will require communication with the Yahoo! Finance API Adaptor to get the
+current price of the target stock to be purchased/sold. If the order is a limit
+trade, we must define a way to check if the current price of the stock matches
+the limit price and execute the order.\\
+
+\subsection{Database Connection}
+We want to have a single subsystem maintain control of accessing the database to make retrieving information modular. This will allow expansion of the application to add additional functionality later, which may also need access to the database. This should provide a layer of security so each subsystem does not access the database directly. Additionally, the single subsystem will give us an interface for interacting with the database, without worrying about the underlying implementation of the database. In the long run, this will allow us to insert data to a different database (Ex. NoSQL) without spending time to refactor the code. Using a database connection will also help to increase security within our system by helping to prevent against attacks, such as SQL injections.\\
+
+\newpage
+\section{Association Definitions}
+
+\begin{centering}
+\renewcommand\arraystretch{1.3}
+\label{UC-3}
+\begin{longtable}{|p{1.75in}| p{3in}| p{1.75in} |}
+\hline
+\bfseries{\color{color1}Concept Pair} &
+          \bfseries{\color{color1}Association description} &
+          \bfseries{\color{color1}Association name} \\ \hline
+
+           Login View $<>$ Account Controller &
+           Login View sends a login request. Account Controller can respond with Success
+           or Failure. &
+           sends \\ \hline
+
+           Account Controller $<>$ DB Connection
+           & Account Controller sends user login details. DB Connection sends account
+           info or failure.
+           & sends \\ \hline
+
+           Account Controller $<>$ Player Profile View
+           & Account Controller updates view to be the Player Profile View. (Profile
+           View may also allow user to change some account settings).
+           & updates \\ \hline
+
+           Player Profile View $<>$ League Controller
+           & User may send request to League Controller to update, join, or leave a league.
+           League controller can update view with information.
+           & sends \\ \hline
+
+           League Controller $<>$ DB Connection
+           & League controller request league statistics from DB Connection. DB Connection
+           sends statistics
+           & sends \\ \hline
+
+           Player Profile View $<>$ Order System Controller
+           & Player Profile View sends requests to the Order System Controller.
+           Order System Controller updates the Profile View.\
+           & sends,\\ \hline
+
+           Order System Controller $<>$ Yahoo! Finance API Adaptor
+           & Order System Controller sends requests to API Adaptor about stock prices.
+           API Adaptor returns information about the stock info.
+           & sends \\ \hline
+
+           Order System Controller $<>$ Limit Order Queue
+           & Order System Controller creates the limit order queue when a limit order
+           is placed but cannot be executed immediately.
+           & creates\\ \hline
+
+\end{longtable}
+\end{centering}
+
+The associations of domain concepts are derived from the table above.
+The Account Controller takes information that a user enters into the
+Login View. This information is sent to check with the Database. The
+Account Controller can change the view to the Player Profile based on
+what information is stored in the database. From the Player Profile
+View a user can access account settings, leagues, and portfolio details.
+The league details are managed by the League Controller, which can allow
+requests to create/join a certain league. The league controller should
+also periodically update the Player Profile View’s statistics of the
+leagues they are in. The Order System Controller allows the user to
+search market data, and attempt buy/sell/short trades. The Order System
+Controller must communicate to see if the user has sufficient funds.
+Limit trade may not be executed until the stock price reaches a certain
+value. If the limit trade cannot be executed immediately a Limit Order
+Queue is created and these orders will be placed in here. The Order
+System Controller communicates with the Yahoo! Finance API Adaptor to
+retrieve current quotes for stocks. Yahoo! Finance Servers must be
+online for this to work correctly. \\
+
+\section{Attributes Definitions}
+
+\begin{centering}
+\renewcommand\arraystretch{1.3}
+\label{UC-3}
+\begin{longtable}{|p{4in}| p{1in}| p{1.5in} |}
+\hline
+\bfseries{\color{color1}Responsibility} &
+          \bfseries{\color{color1}Attribute} &
+          \bfseries{\color{color1}Concept} \\ \hline
+
+          \textbf{R9}: Know if user login failed
+          & LoginFailed
+          & Login View \\ \hline
+
+
+          \textbf{R10}: Player's name and OpenID
+          & Name/OpenID
+          & Player Profile View \\ \hline
+
+          \textbf{R11}: Players Account Balances (Cash Balance,
+          Money Invested, Daily Change).
+          & Account Summary
+          & Player Profile View \\ \hline
+
+          \textbf{R12}: Stocks User added to WatchList.
+          & WatchList
+          & Player Profile View \\ \hline
+
+          \textbf{R13}: Stocks User owns.
+          & Owned Stocks
+          & Player Profile View \\ \hline
+
+          \textbf{R14}: Leagues and Rankings
+          & leagueID/rank
+          & Player Profile View \\ \hline
+
+          \textbf{R15}: Know if user is logged in
+          & isLoggedIn
+          & Account Controller \\ \hline
+
+          \textbf{R16}: Know which leagues user is in.
+          & isInLeague
+          & League Controller \\ \hline
+
+          \textbf{R17}: Know if user is creating a league
+          & isCreatingLeague
+          & League Controller \\ \hline
+
+
+\end{longtable}
+\end{centering}
+
+At the Login View it is good to know if a Login attempt failed so we
+can display the correct information to the user. When a Login is
+successful the Account Controller will set the isLoggedIn attribute,
+then interacts with the DB Connection to retrieve all information to
+populate the Player Profile View’s attributes such as Name, OpenID,
+Account Summary, Owned Stocks, LeagueID’s, and rankings.\\
+
+At the Player Profile View the user may attempt a variation of things
+such as changing account settings, joining/creating a league, making
+an order, or viewing market data. The League Controller has attributes
+isInLeague so it knows how to update data for the Profile view. It also
+has attribute isCreatingLeague, to submit this data through the Database
+Connection after a successful league creation. \\
+
+The Player Profile View can also interact with the Order System Controller
+to view market data and place an order. The Order System Controller will
+use isValidValue to check if the account balance is sufficient to perform
+the operation. isValidStock checks to see if the symbol entered is a valid inquiry. \\
+
+
+Yahoo! Finance API Adaptor communicates between the Order System Controller
+and the Yahoo Finance Server to deliver information about a particular stock.
+retrieveData is the attribute to search a stock value and then return it to
+the Order System Controller to perform a useful operation on it.\\
+
+Database Connection has a retrieveData attribute to be able to read data
+from the database. There is also a writeData attribute to be able to store
+all information about the Players of the game.\\
+
+
+\newpage
+
+\section{Traceability Matrix}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.5in]{./img/tracedomain.png}
+\caption{The traceability matrix.}
+\end{figure}
+
+
+
+
+
+% Preface the high-level organization of the domain
+\iffalse
+At its highest level, Capital Games consists of a few subsystems
+working together and coordinated by an internal controller. The
+end user interacts with the application through either a web browser
+or by directly submitting HTTP requests to the server. These actions
+are equivalent because user actions are translated into RESTful actions
+and interpreted equivalently by an appropriate RESTful controller. \cite{wiki:restful}
+Once a controller is invoked, it consults the 
+internal subsystems before responding to the request. Each of the 
+subsystems can be identified by the purpose they serve in relation
+to the application. 
+
+% Concept Definitions
+
+\subsection{Database}
+By its nature as a data-driven site, data persistence
+is core to Capital Games. Therefore, a database subsystem is necessary. 
+A challenge often encountered when using databases in an application is
+the translation of database-native datatypes to the more varied datatypes
+employed by dynamic applications. \cite{wiki:orm} To simplify this,
+Capital Games uses the ActiveRecord object-relational mapper to abstract
+the logic between the database and the system as a whole. Only privileged portions
+of the system have access to the database. This maintains the safety of the
+data while also allowing it to be manipulated more precisely. Per the convention
+of MVC-style application style architecture 
+% insert reference here for later chapter
+(upon which we base our application, described in more detail later), these 
+are known as the Models. The database is explored in more detail in the Data Structures section.
+
+\subsection{Finance API Adaptor}
+The data for the application comes from a third party source, Yahoo! Inc. Yahoo!
+provides both nearly-real-time and historical data on most U.S.-traded stocks.
+Yahoo! exposes this data through a web API service in which a party can make
+up to several thousand requests against Yahoo!'s databases daily. The party
+simply enters arguments into an HTTP request which is interpreted by Yahoo!
+as a database search, runs the query, and returns the results in CSV format. \cite{gummy}
+
+In order to interact with the web service, we employ an adaptor plugin which
+translates between the various syntaxes used by Yahoo! and our own system.
+Any and all parts of the application which require access to a live data-stream
+invoke the Finance Adaptor subsystem, which in turn queries Yahoo!. This
+modularity enables multiple subsystems of the application to have access to live data
+when necessary.
+
+\subsection{Queueing (Asynchronous Task) System}
+
+Fundamentally, Capital Games is about placing trading orders for various stocks. 
+Though the simplest type, market orders, are executed almost immediately after being 
+placed, stop and limit orders may not be executed for quite some time. \cite{inv:market}
+\cite{inv:stop} \cite{inv:limit} This begs the question of how to perform a trade
+at some undetermined time after the order is placed. 
+Upon further inspection, a few other functions of the site depend on a similar capability.
+In order to update the user portfolio database regularly or send out newsletters, the system 
+must be able to asynchronously execute certain tasks. Enter a Queueing System.
+
+Whenever a task needs to be performed asynchronously, the task is entered into a 
+designated portion of a Redis database, configured as a queue. Background "workers" 
+(processes) perform tasks as they arrive. Tasks can also be scheduled to occur at specific
+times or intervals. In this way, everything from polling the datastream for stock updates
+to performing scheduled updates and e-mails can be coordinated by a single system.
+
+\subsection{Views Generator}
+
+Finally, when all data have been collected and a response needs to be rendered, those data
+are delivered to a subsystem which dynamically generates the content
+which are served up to the end-user. The Views Generator contains various modules which
+simplify translating the data to web-standard HTML and Javascript.
+
+\subsection{Mailer System}
+
+Capital Games is designed to periodically alert users as to their portfolio performance.
+This is performed by the Queueing System in conjunction with the Mailer system.
+The framework we employ natively contains a robust mailing system called Action Mailer,
+which generates content dynamically at runtime. \cite{action:mailer} This allows us to perform calculations
+on leagues and then include that into emails, in addition to raw data.
+
+%\begin{itemize}
+%\item \textbf{Users}: Every end-user of the application needs both a private and
+%public facing identity on the site.
+%
+%\item \textbf{Site Administrators}: The site needs a few global administrators
+%who can delete posts and ban users which are innappropriate, as well
+%as perform several maintenance features.
+%
+%\item \textbf{Leagues}: Every end-user is participating in one or more leagues.
+%
+%\item \textbf{Investors}: Because an end-user can participate in multiple leagues,
+%and each instance of the user can have a separate amount of money, margin,
+%etc., it is necessary to maintain a separate identity for each of these 
+%instances -- \emph{investors}.
+%
+%\item \textbf{League Manager}: Every League should have a superuser who is 
+%able to invite other players, perform moderation, and change settings.
+%\end{itemize}
+%
+%Although not actors themselves, from UC-4 (page \pageref{UC-4}) and UC-5 
+%(page \pageref{UC-5}) it is apparent that end-users are implicitly 
+%requesting and manipulating data for their orders and portfolios. These,
+%too, become part of the application domain.
+%
+%\begin{itemize}
+%\item \textbf{Orders}: When an \emph{Investor} places any type of order, it
+%needs to be tracked. 
+%\item \textbf{Stocks}: Whenever an Investor is tracking the performance of a
+%stock, those data need to be stored locally. Stocks is a unified 
+%data object to contain those data.
+%\end{itemize}
+%
+%One of the actors at the back end of UC-3 (page \pageref{UC-3}) and UC-4
+%(\pageref{UC-4}) was the Financial API, responsible for accessing the 
+%market data stream. 
+%
+%\begin{itemize}
+%\item \textbf{Financial API}: This module presents an interface for requesting market
+%data, both live and historical. 
+%\end{itemize}
+%
+%Upon further analysis, it becomes apparent that the domain model is missing
+%functionality responsible for asynchronously executing jobs. This is another
+%core feature of the site, without which Stop and Limit Orders could not 
+%be placed.
+%
+%\begin{itemize}
+%\item \textbf{Queueing System}: Many interactions need to be performed asynchronously,
+%such as the execution of Stop and Limit Orders and the delivery of e-mail 
+%updates. This module encapsulates the functionality of creating, maintaining,
+%and executing jobs which need to be performed asynchronously.
+%\end{itemize}
+%
+%Finally, we need an abstraction for the part of the system which invokes and operates
+%upon the rest as a collective.
+%
+%\begin{itemize}
+%\item \textbf{Controller}: The Controller is the model which receives requests from 
+%the end-user, interprets them, invokes other models and modules accordingly, and 
+%returns the response (when applicable).
+%\end{itemize}
+%
+%
+%% Association definitions between actors
+\section{Association Definitions}
+
+As indicated in Figure~\ref{domainModel2}, there are 6 components which are core
+to our system: Controller, Views, Models, Finance Adaptor, Queueing System, and
+Mailer.
+
+The Controller acts as the single point-of-entry for all user interactions. It
+interpretes requests and accordingly accesses the Models, the Finance Adaptor,
+and the Queueing System, before delivering the necessary data to the Views
+Generator. By definition, the Controller is the most prviliged system component.
+
+The Queueing System is possibly more privileged than the Controller. It has a great deal
+of autonomy, functioning without the Controller and being able to invoke other systems
+on its own. Compare this to the Controller, which is only invoked upon requests from
+a user. The Queueing System communicates with Models, the Finance Adaptor, and the 
+Mailer as necessary to perform its tasks.
+
+Conversely, the Views Generator is the least privileged subsystem. It cannot
+externally communicate and only responds to to the actor which called it.
+
+The Finance Adaptor, Mailer, and Models are each afforded limited privileges, in that the
+Models and Mailer need to communicate with the database and Views, respectively, 
+while the Finance Adaptor needs to communicate with external data sources through the Internet.
+They each respond directly to requests from the componenets which invoke them.
+
+\begin{figure}
+\centering
+\label{domainModel2}
+\includegraphics[width=6.5in]{./img/domainModel2.pdf}
+\caption{This high-level overview of the domain model of our application shows the 
+separation between the external actors User, Browser, and Yahoo! Finance, as well as
+how the internal component subsystems relate to each other.}
+\end{figure}
+%
+%% brief discussion of how the parts relate to each other
+%Clearly, many of these models are interrelated. Below is a non-comprehensive
+%list of associations between various types of models.
+%
+%\begin{itemize}
+%\item \textbf{Controller}: The Controller interacts with the collective database layer, 
+%as well as the other core modules.
+%	\begin{itemize}
+%	\item \textbf{Association}: Controller invokes the Database layer (and data contained therein)
+%	\item \textbf{Association}: Controller invokes the Financial API 
+%	\item \textbf{Association}: Controller invokes the Queueing System
+%	\end{itemize}
+%\item \textbf{Queuing System}: The Queueing System can almost be thought of as a 
+%miniature, self-regulating Controller. It can invoke the Financial API and the 
+%collective database layer.
+%	\begin{itemize}
+%	\item \textbf{Association}: Queueing System invokes the Financial API
+%	\item \textbf{Association}: Queueing System invokes the Database layer
+%	\end{itemize}
+%\item \textbf{Database Layer}: The Database Layer stores data into data objects and then
+%saves them to the underlying database. The Database Layer can perform limited checking
+%and updating logic when invoked, but is not self-regulating. It contains models of
+%several types of actors.
+%	\begin{itemize}
+%	\item \textbf{Users}: Represents end-users and their personal information
+%		\begin{itemize}
+%		\item \textbf{Inheritance}: Users is the parent class of Site Administrators
+%		\item \textbf{Aggregation}: Users have many Investors (User-Instances)
+%		\item \textbf{Composition}: Leagues have many Users
+%		\end{itemize}
+%	\item \textbf{Site Administrators}: A superclass of Users
+%		\begin{itemize}
+%		\item \textbf{Inheritance}: Site Administrators inherits from Users
+%		\end{itemize}
+%	\item \textbf{Leagues}: Represents simulation instances
+%		\begin{itemize}
+%		\item \textbf{Composition}: Leagues have many Users
+%		\item \textbf{Composition}: Leagues have many Investors (User-Instances)
+%		\item \textbf{Aggregation}: Leagues have many Orders
+%		\end{itemize}
+%	\item \textbf{Investors}: Represents User-Instances within Leagues
+%		\begin{itemize}
+%		\item \textbf{Composition}: A League has many Investors
+%		\item \textbf{Aggregation}: A User has many Investors
+%		\item \textbf{Aggregation}: An Investor has many Orders
+%		\end{itemize}
+%	\item \textbf{League Managers}: A superclass of Investors
+%		\begin{itemize}
+%		\item \textbf{Inheritance}: League Managers inherits from Investors
+%		\end{itemize}	
+%	\item \textbf{Orders}: Contains order data
+%		\begin{itemize}
+%		\item \textbf{Aggregation}: Leagues have many Orders
+%		\item \textbf{Aggregation}: Investors have many Orders
+%		\item \textbf{Association}: Orders are placed for Stocks
+%		\end{itemize}
+%	
+%		In addition, there are a few interesting types of orders, namely:
+%		\begin{itemize}
+%		\item \textbf{Market Order}: Orders executed immediately
+%		\item \textbf{Stop Order}: Orders executed after a certain price is exceeded
+%		\item \textbf{Limit Order}: Orders executed strictly beyond a certain price
+%		\end{itemize}
+%	\item \textbf{Stocks}: Contains data on stocks held by Investors
+%		\begin{itemize}
+%		\item \textbf{Association}: Orders are placed for stocks
+%		\end{itemize}
+%	\end{itemize}
+%\end{itemize}
+%
+
+% Attribute definitions
+\section{Attribute Definitions}
+
+Though the application is a whole is not entirely object-oriented,
+and thus not all parts (ie the Controller) have true attributes,
+the Models, Queueing System, and Financial Adaptor all do. 
+
+Models possess basic attributes for the data they contain, such
+as user names, email addresses, stocks possessed, etc. These are
+contained in Figure~\ref{domainModel}.  Similarly, Orders to
+be performed in the Queue have similar identifiers, as shown in 
+Figure~\ref{queuestruct}.
+
+Validation on the data saved by the Models layer is performed 
+automatically by the object-relational mapper, which can enforce
+data typing rules built into the database. This happens automatically.
+
+Orders data is proxied through the database, and so its data is also
+validated before being entered. Though a remote edge case is the 
+possibility of an order being valid while placed but being invalidated
+(for example by a stock no longer being on the market) while in the
+queue, we do not consider it at this time.
+
+The Queueing System utilizes entities called ``background workers''.
+As the name implies, these are persistent entities which wait
+for work in the form of queued tasks to hit the Redis database. When
+this happens, the first available worker pulls the task from the queue.
+
+The Financial Adaptor possesses a set of financial metrics, a brief
+list of which is tabulated in Table~\ref{financeparams}. When
+data is retrieved by the adaptor, it is tabulated with some of the
+parameters shown in the table.
+
+
+\begin{figure}
+\label{queuestruct}
+\centering
+\includegraphics[width=6.5in]{./Diagrams/ComponentModels/BackgroundProcessStructuralModel.pdf}
+\caption{The structural model of the Resque Queueing System. Market Orders to be placed are 
+bundled as Orders and served to the queue to be processed every few minutes. Newsletters are 
+performed daily and bundled and served every night. Background workers wait for updates to
+the Redis database and upon seeing a valid task, pull it and begin processing.}
+\end{figure}
+
+\begin{table}
+\label{financeparams}
+\centering
+\renewcommand\arraystretch{1.5}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Ticker & Name & Date & Time \\
+\hline
+Change \% & Previous Close & Open & Volume \\
+\hline
+Day High & Day Low & Day Range & Ticker Trend \\
+\hline
+Bid & Ask & Average Daily Volume & Price-to-Earnings Ratio \\
+\hline
+\end{tabular}
+\caption{These are some of the data that Yahoo! Finance provides upon request, and which the adaptor we employ
+can convert.}
+\end{table}
+%
+\fi
+%
+%It is clear from the domain model abstraction above that the Database Layer
+%models have many noteworthy attributes, and are heavily state-based. However,
+%the Financial API has no state, and is simply an aggregation of functionality.
+%Likewise with the Controller. Therefore, attributes are only elaborated on for
+%the Database Layer. 
+%
+%\begin{itemize}
+%	\item \textbf{User}
+%		\begin{itemize}
+%		\item Name: String
+%		\item E-mail: String
+%		\item Password: String
+%		\item Admin: Bool
+%		\item Banned: Bool
+%		\end{itemize}
+%	\item \textbf{Investor}
+%		\begin{itemize}
+%		\item Manager: Bool
+%		\item League ID: Integer
+%		\item User ID: Integer
+%		\item Capital: Double
+%		\item Margin: Double
+%		\end{itemize}
+%	\item \textbf{League}
+%		\begin{itemize}
+%		\item Start Date: Date
+%		\item End Date: Date
+%		\item Capital: Double
+%		\item Margin: Double
+%		\item Commission: Double
+%		\item Privacy: Bool \footnote{To simplify joining private leagues, 
+%			we allow that whenever a User is ``invited'' to join one,
+%			an \emph{Investor} is created for them within that league, 
+%			granting immediate access.}
+%		\end{itemize}
+%	\item \textbf{Orders}
+%		\begin{itemize}
+%		\item League ID: Integer
+%		\item Investor ID: Integer
+%		\item Time Ordered: Date
+%		\item Time Executed: Date
+%		\item Ticker: String
+%		\item Order Type: String \footnote{Market, Stop, Limit}
+%		\item Transaction Type: String \footnote{Buy, Sell, Short, Cover}
+%		\item Quantity: Integer
+%		\item Duration Valid: Date
+%		\end{itemize}
+%	\item \textbf{Stocks}
+%		\begin{itemize}
+%		\item Date: Date
+%		\item Ticker: String
+%		\item Price: Double \footnote{Any other interesting metrics can likewise
+%			be stored here.}
+%		\end{itemize}
+%\end{itemize}
+%
+%The Queueing System itself is an aggregation of functionality
+%present in the controller and operates on state data from the Database. However,
+%it is still under active development, and so a model for it has not yet been 
+%constructed. It could be one large, all-encompassing system, or (more likely)
+%will be split off into individual subsystems.
+
+% put some BS here...
+
+% Traceability Matrix
+% This section can be implemented at your discretion,
+% and to the extent you desire. We were already
+% kind of waived out of having one, but maybe include
+% the derivations of the domain model from the use cases
+% or at least why an MVC style works. No need to go into
+% too much detail about MVC though, because there's an
+% architecture report due next week anyway...
+% \section{Traceability Matrix}
+
+% Put the Domain Model Graphic here:

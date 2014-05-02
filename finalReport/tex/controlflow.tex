@@ -1,0 +1,65 @@
+\section{Global Control Flow}
+
+\subsection{Execution Order}
+In general, the implementation of the system at Paramount Investments
+is for the most part, event-driven.  All the features that the system
+has to offer must be triggered by some entity, whether it be the user
+themselves or some other part of the system.  Overall, most of the
+event-driven characteristic comes from the user end of the system.
+Many of the functionalities (stock trading, portfolio viewing, league
+joining, etc..) can only be triggered by the user.  There are however,
+some event-driven functionality that are initiated by the system. When
+the user places an order, it is processed and added into the database.
+From here, the system initiates the process of checking the order and
+then it uses Yahoo Finance API to retrieve market information about the
+stock, obtain a quote and then actually process the order.\\
+
+There is some functionality that have to be executed in a defined order.
+Before the user starts investing, they must a few steps:
+\begin{itemize}
+
+\item[--]{Registration/creating an account: any user must register
+within our website before joining a league.}
+
+\item[--]{Join a league: any user must first join a league before
+they can start investing.}
+
+\item[--]{Achievements: any user must first complete the required
+criteria before they can be awarded with the achievement trophy.}
+
+\end{itemize}
+
+However, on the whole, our system is still definitively an event-driven one.
+
+\subsection{Time Dependency}
+In general, the system at Paramount Investments is very much a real-time system,
+but there are features that do not depend on time.  The real-time system is very
+reliant on the stock market, which itself has certain times of operation.  As
+the user is browsing the website, there are real-time timers that help the system
+process information that it is receiving.
+
+\begin{itemize}
+\item[--]{Achievement Timer: This timer is used at the end of the day to check
+for achievement specs for all the users.  Achievements/ rewards will then be
+    dished out accordingly.}
+
+\item[--]{Stock Market open and close: The stock market has a time interval
+between when it’s open and when it is closed.}
+
+\item[--]{Queuing system: the orders placed by users are placed into a queue.
+Depending on market conditions, this can place high loads on the server.
+To balance the server load, we must split the orders effectively.  The timer
+in this system helps to check for unexecuted/ outstanding orders and then processes
+them.}
+
+\end{itemize}
+
+\subsection{Concurrency}
+There are sub-systems in our main system which have to be carefully thought of
+due to concurrency.  The biggest of these is the queuing subsystem.  This produces
+a concurrency issue because we have to make sure that no more than 1 order is being
+inserted into the queue at any given time.  Likewise, we also have to make sure that
+no more than 1 order is being dequeued from a given queue.  Other than this our system
+really does not need any synchronization.  However, this may change as we are
+implementing our system.
+

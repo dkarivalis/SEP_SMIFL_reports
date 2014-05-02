@@ -1,0 +1,149 @@
+@misc{inv:short,
+	author = "Investopedia",
+	title = "Short (or {S}hort {P}osition) Definition | {I}nvestopedia",
+	howpublished = "\url{http://www.investopedia.com/terms/s/short.asp}",
+	note = "[Online; accessed 22 {F}ebruary 2013]"
+}
+
+@misc{inv:stop,
+	author = "Investopedia",
+	title = "Stop Order Definition | {I}nvestopedia",
+	howpublished = "\url{http://www.investopedia.com/terms/s/stoporder.asp}",
+	note = "[Online; accessed 22 {F}ebrauary 2013]"
+}
+
+@misc{inv:limit,
+	author = "Investopedia",
+	title = "Limit Order Definition | {I}nvestopedia",
+	howpublished = "\url{http://www.investopedia.com/terms/l/limitorder.asp}",
+	note = "[Online; accessed 23 {F}ebruary 2013]"
+}
+
+@misc{inv:bidask,
+	author = "Investopedia",
+	title = "Bid-Ask Spread | {I}nvestopedia",
+	howpublished = "\url{http://www.investopedia.com/terms/b/bid-askspread.asp}",
+	note = "[Online; accessed 18 {F}ebruary 2013]"
+}
+
+@misc{wiki:restful,
+	author = "Wikipedia",
+	title = "Representational state transfer - {W}ikipedia, the free encyclopedia",
+	howpublished = "\url{http://en.wikipedia.org/wiki/Representational_state_transfer}",
+	note = "[Online; accessed 23 {F}ebruary 2013]"
+}
+
+
+@misc{wiki:mvc,
+	author = "Wikipedia",
+	title = "Model-view-controller - {W}ikipedia, the free encyclopedia",
+	howpublished = "\url{http://en.wikipedia.org/wiki/Model-view-controller}",
+	note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:rdb,
+	author = "Wikipedia",
+	title = "Relational database - {W}ikipedia, the free encyclopedia",
+	howpublished = "\url{http://en.wikipedia.org/wiki/Relational_database}",
+	note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:play,
+    author = "Wikipedia",
+    title = "Play Framework",
+    howpublished = "\url{http://en.wikipedia.org/wiki/Play_Framework}",
+    note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:dog,
+  author = "Wikipedia",
+  title = "Eating your own dog food",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Eating_your_own_dog_food}",
+  note = "[Online; accessed 15 {M}arch 2014]"
+}
+
+
+@misc{wiki:do,
+    author = "Wikipedia",
+    title = "Digital Ocean",
+    howpublished = "\url{http://en.wikipedia.org/wiki/DigitalOcean}",
+    note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:boot,
+    author = "Wikipedia",
+    title = "BootStrap (front-end framework)",
+    howpublished = "\url{http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)}",
+    note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:oauth,
+    author = "Wikipedia",
+    title = "OAuth",
+    howpublished = "\url{http://en.wikipedia.org/wiki/OAuth}",
+    note = "[Online; accessed 23 {F}ebruary 2014]"
+}
+
+@misc{wiki:tdd,
+    author = "Wikipedia",
+    title = "Test-driven development",
+    howpublished = "\url{http://en.wikipedia.org/wiki/Test-driven_development}",
+    note = "[Online; accessed 16 {M}arch 2014]"
+}
+
+@misc{wiki:api,
+  author = "Wikipedia",
+  title = "Application Programming Interface",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Application_programming_interface}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:ip,
+  author = "Wikipedia",
+  title = "IP Address",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Ip_address}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+
+@misc{wiki:sync,
+  author = "Wikipedia",
+  title = "Java Concurrency - Synchronization",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Java_concurrency#Synchronization}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:open,
+  author = "Wikipedia",
+  title = "OpenID",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Openid}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:comt,
+  author = "Wikipedia",
+  title = "Comet",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Comet_(programming)}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:ajax,
+  author = "Wikipedia",
+  title = "AJAX",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Ajax_(programming)}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:html,
+  author = "Wikipedia",
+  title = "HTML",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Html}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}
+
+@misc{wiki:css,
+  author = "Wikipedia",
+  title = "CSS",
+  howpublished = "\url{http://en.wikipedia.org/wiki/Css}",
+    note = "[Online; accessed 19 {M}arch 2014]"
+}

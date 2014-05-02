@@ -1,0 +1,145 @@
+\chapter{System Requirements}
+
+\section{User Stories}
+
+The user stories written and elaborated below demonstrate several particular instances and
+requirements for program functionality, as well as a weight to measure relative importance of
+each requirement. In particular these functions are not necessarily written in order of
+particular weight or functional precedence but are simply a list of end user story requirements
+and relative weighted importance. It is important to observe that these cases will be
+elaborated on and referenced in further sections of this document. The following are told
+from the perspective of the user from his or her view with the intention of fully encapsulating
+what he or she should expect to be able to see or do upon entering and regularly using the
+referenced software. \\
+
+\renewcommand\arraystretch{2}
+\begin{longtable}{|p{0.6in}|p{4.6in}|p{0.5in}|}
+\hline
+{\large \color{color1}Identifier}&{\large \color{color1}User Story}&{\large
+  \color{color1}Weight} \\ \hline
+ST-1&As a user, I can create an account without registering with the website
+in order to participate in Paramount Investment League.&10 pts \\ \hline
+
+ST-2&As a user, I can access the application across multiple platform paradigms
+so that I may continue to participate when I don't have access to a desktop
+computer.&10 pts \\ \hline
+
+ST-3&As a user, I can join or create leagues with self-selected goals so that I
+may compete with others in a simulated stock market environment based on
+near real-time stock data.&10 pts \\ \hline
+
+ST-4&As a user, I can search for companies by stock symbol and be presented with
+their current financial information so that I may research future investments.&6
+pts  \\ \hline
+
+ST-5&As a user, I can browse a companies profile and view the performance data
+over a configurable span of time so that I may determine whether or not I want
+to invest in them.&6 pts  \\ \hline
+
+ST-6&As a user, I can buy or sell stocks so I may build my portfolio.&10 pts
+\\ \hline
+
+ST-7&As a user, I can earn badges(achievements) that reward me with additional
+capital or new features for accomplishing predefined tasks.&10 pts \\ \hline
+
+ST-8&As a user, I can manage my portfolio within a league to track my
+investments.&8 pts  \\ \hline
+
+ST-9&As a user, I can visually track my finances via graphs and charts so I may
+more easily manage my portfolio.&4 pts  \\ \hline
+
+ST-10&As a user new to the stock market, I will have access to an educational
+interface that teaches me about the stock market via pop-up dialogues.&6 pts
+\\ \hline
+
+ST-11&As a user, I can see trades being made by all other users in real-time via
+a stock-ticker like marquee so I may have a quick overview of current trends.&3
+pts  \\ \hline
+
+ST-12&As a user, I can see the performance of other users' portfolios so I may
+observe the investment habits of others.&2 pts  \\ \hline
+
+ST-13&As a user, I can view a portfolio leader board so I may have a summary of
+relative performance between users in my league.&1 pt   \\ \hline
+
+ST-14&As a user, I can opt to receive periodic e-mail notifications of my stock
+performance or trades so I may be kept up to date even when not actively viewing
+the site.&3 pts  \\ \hline
+
+ST-15&As a user, I can additionally link my account with social media sites so
+I may share my fantasy league experience with friends.&1 pt   \\ \hline
+
+ST-16&As a league manager, I can add league rules, a league name, and a league
+logo to personalize my league.&8 pts  \\ \hline
+
+ST-17&As a league manager, I may invit who I want to join.&8 pts
+\\ \hline
+
+ST-18&As a league manager, I can create league announcements.&4 pts  \\ \hline
+
+ST-19&As a site administrator, I can view reports of and delete leagues that are
+inactive.&2 pts  \\ \hline
+
+ST-20&As a site administrator, I may post front page news or announcements.&3
+pts  \\ \hline
+
+ST-21&As a site administrator, I may have access to a user count, number of
+active leagues, total leagues, quantity of daily transactions, the most/least
+popular stocks, and newly created so I may have reliable site statistics. &9 pts
+\\ \hline
+
+ST-22&As a league manager, I can choose the specific victory conditions for a particular
+game (eg: first to a certain capital, net gain, or overall gain within a time).
+As a user I can view this condition and my progress toward victory.&5 pts \\ \hline
+
+\end{longtable}
+
+The above requirements outline a general list of requirements which we expect to reflect
+the core functionality of our software (with higher weighted items acting as higher priority
+and being implemented first). The ultimate goal of the software is to simulate that of a
+real world stock market with users having the options to perform and carry out the important
+and basic trading actions (see ST-6). We plan to add increased functionality when compared to
+years prior, however. With the addition of achievements, varied victory conditions, as well
+as increased leaderboard functionality Paramount Investments will appeal to a larger audience
+than that of years past (see ST-7, ST-13, ST-22). Notice that items such as administrative
+privileges as well as league creation and stock execution are prioritized with substantially
+higher priority with relation to our newly added functionality. This is because the core
+functionality of the software is absolutely crucial to it working. We will expand on the
+core as well Supplement requirements.\\
+
+\subsection{Core requirements}
+
+These requirements are absolutely crucial to the viability and progression of the software.
+That is the user can create and log into an account on a daily basis. We will use a basic
+authentication system to implement this. Importantly the user will be able to access this
+UI on multiple different platforms to ensure complete and smooth transitional access to the
+system with zero down time. (ST-1, ST-2) \\
+
+The user will be able to access his or portfolio. (ST-6) From this portfolio, they can view
+their currently owned stocks as well as monitor the performance of their portfolio. They can
+view progress toward goal requirements and badges. (ST-8) From this location they can take
+action to buy and sell stock or perform short, stop, limits, etc. \\
+
+League managers will have access to a specific configuration setup where they can choose
+victory conditions, league settings, and monitor progress of investors within the league.
+This functionality is core to the formation of leagues within the game. (ST-3, ST-16)\\
+
+This project will NOT be its own market. In order to maintain the idea of perfect competition
+and unbiased market prices, all data will be taken from Yahoo! Finance to submit data and
+trades will be taken from here. This software is not intended to be a way for people to
+trade actual stock, rather just a resource for learning the market and tools of trade. \\
+
+\subsection{Supplemental Requirements}
+The user will be able to access social media integrated applications, and decide whether
+or not to keep their social media profile updated and informed with updates on progress from
+their fantasy league. (ST-15) They may also receive email updates with various progressions in
+the game (ST-14)\\
+
+The user will be kept updated on the progress of other users to view their trades as well as
+recent market trades and trends. (ST-12, ST-11)\\
+
+Users will also have access to on-site term explanation similar to that seen on Wikipedia.
+That is, they may scroll over an underlined term to find a brief definition and additional
+resources. (ST-10)\\
+
+
