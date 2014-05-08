@@ -219,6 +219,21 @@ This attribute holds the name of the league.\\*
 This attribute holds the necessary requirement for a person to be declared the
 winner of a league. \\*
 
+\section{Traceability Matrix}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.5in]{./img/trace.jpg}
+\caption{The database manager is in connection with all other controllers. This
+is because all data is maintained in the database. The database also deals with
+object classes such as Stock, Portfolio, User, and League. The order controller
+only deals with Stocks and which portfolios to place them. The League Controller
+only deals with leagues. The Account Controller deals with user objects. The
+Yahoo Finance Adaptor returns Stock objects to the Order Controller when
+requested.}
+\end{figure}
+
 \section{Object Constraint Language}
 
 In order to separate ideas in OCL, we will split it up descriptions by each
