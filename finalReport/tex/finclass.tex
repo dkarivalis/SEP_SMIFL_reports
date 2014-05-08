@@ -219,35 +219,40 @@ This attribute holds the name of the league.\\*
 This attribute holds the necessary requirement for a person to be declared the
 winner of a league. \\*
 
+\section{Object Constraint Language}
+
+In order to separate ideas in OCL, we will split it up descriptions by each
+class in the class diagram.
+
+\subsection{Database Manager}
+The data base manager is the central point where all data is recorded and
+accessed. The existing constraints are as follows. When using a get[x]info()
+function, the associated long id value must be available to be provided.
+This allows access into the database tables to be able to return information
+about a class. When using an update[x]() function, the associated long id must
+be included, and also an object containing the information that you want to
+update.
+
+\subsection{Order Controller}
+The order controller handles placing orders. The current constraint involved
+with its functions require a portfolio id and Stock object.
+
+\subsection{Yahoo! Finanace Class}
+
+The Yahoo Finance Adapter is responsible for creating and returning a Stock
+object based on the input data. The Yahoo Finance Server is contacted to
+retrieve data. The constraint of this class is that proper Ticker symbols must
+be input.
+
+\subsection{Account Controller}
+The account controller is able to create and delete accounts. The only
+constraint to the account controller is that to delete an account the user id
+must be available.
+
+\subsection{League Controller}
+The league controller is capable of creating and deleting leagues. There are no
+constraints to creating a league. The only constraint to deleting a league is
+that the league id must be available in the database, or in other words, the
+league must exist.
 
 
-\iffalse
-
-
-\subsection{Object Constraint Language}
-In order to separate ideas in OCL, we will split it up descriptions by each class in the class diagram.
-\subsubsection{Finanace Adaptor Class}
-In this class, we have a few constraints that deal with this class being kind of central to all of the other classes that make up our financial adaptor. The function to buy or sell stocks are the same in their constraints. You must have a symbol name which is not equivalent to NULL and is the symbol of a company that exists. The amount must be a positive integer and if you are buying you must have enough to spend on this. Lastly, the userID must be plugged in, so that must also not be NULL and it should hold the username of someone who exists. The function get\_company\_data must have a symbol passed in that exists and is not NULL. The function scan\_list must be called after the list already exists, or there will be an error. Lastly, the update\_companies function must have a return from EoDdata that is valid and not corrupted.
-\subsubsection{Current Companies}
-All three of the functions in this class have the same constraint, that the symbol passed in must exist. On top of that, the ``length'' variable must always be equal to the amount of symbols in the ``symbols'' variable.
-\subsubsection{Yahoo! Finanace Class}
-Fortunately for us, this is another simple addition for it is dealt with completely by Yahoo! Finance. Something that we do have to be careful of is making sure that if we are calling the get\_quotes or get\_hist\_quotes, we have to make sure that we are passing in a valid string. For example, if we passed in a NULL string, we would have an error returned.
-\subsubsection{EoDdata Class}
-This is the simplest class out of any of the ones we deal with, as there are no variables and only one function that returns a large list of stocks without us having to pass in anything. No constraints in this class.
-\subsubsection{Sector and Quote Class}
-The constraints on these classes will work as long as Yahoo! Finanace returned results that are valid. These results are checked in the Finance Adaptor Class, and if it did make it past that point, the data that is passed in is fine, and therefore there are no actual constraints on these classes.
-
-
-\section{Design Patterns}
-Various standard design patterns were utilized to provide functionality for things such as authentication, efficient page rendering and object modeling.
-\subsection{Model-View-Controller}
-The Model-View-Controller (MVC) pattern was heavily used throughout the CapitalGames system to properly organize model logic, business logic and presentation logic. This very intuitive pattern allowed the team to easily delegate work on different levels of the system. Frequently, a selection of team members would develop front-end functionality which required only the views to be altered, while other members implemented backend functionality which was done either in controllers or models. This pattern resulted in a more efficient development lifecycle overall, while also providing some performance gains. Namely, the MVC pattern calls on resources only when they are actually needed which prevents unnecessary overhead. For example, methods developed to be called only programmatically don't attempt to display a view which results in faster responses.
-\subsection{Security Proxy}
-The security proxy pattern was the core of our secure authentication system. This proxy pattern allowed us to easily protect content based on user role or other variables. The security proxy was implemented very similarly to that described in the textbook. Particularly, it behaved as a transparent filter between an HTTP request and a controllers method. Authentication requirements could easily be chained onto each other making it possible to create custom controller prerequisites. Finally, because the security proxy filtered every request made on a controller instead of just requests made upon login, all sensitive features of the site had a very robust shell which no user could easily bypass. This improved our design by providing solid, system-wide security.
-\subsection{ActiveRecord Pattern}
-The ActiveRecord pattern, an intelligent implementation of a database access design pattern, was used exclusively to interact with persistant storage technologies used in the CapitalGames system. This pattern offered the major advantage of not needing to hard code any database-specific queries. All requests made to the ActiveRecord Pattern are translated to the currently used DB system's language and data is returned in directly its object form. The lack of need to write direct queries also lead to a great side effect, namely database agnosticism which allowed various database implementations to be used during different stages of development. During developmnt SQLite was used for its lightweight footprint on the developers machine, then for production MySQL was used as it is considerably more efficient when dealing with larger amounts of data. This design certainly improved our development by saving countless hours of development time.
-\subsection{RESTful Design}
-The RESTful design pattern being used more and more now on the web allowed us to implement our asynchronous order processing system. The RESTful design of some internal functionality allowed it to be accessed programmatically and securily through a simple API. As RESTful services are at the heart of Ruby on Rails, it did not require a lot of effort to expose some internal functionality without creating major security holes. Future iterations of CapitalGames will continue to rely on the stateful communication that our RESTful API offers.
-\subsection{Responsive UI Pattern}
-The Bootstrap UI framework implemented a design pattern completely segregating visual presntation from content and user experience. This provided in a beautiful responsive design which adapted to different client devices ranging from desktops to smartphones. The pattern takes advantage of the flexible markup of HTML5 to customize it on the fly when the page is rendering in the browser using Javascript and CSS. This allowed our team to target the rapidly growing mobile users without much extra implemetation effort. It also inherently produced a faster user experience since minimal processing is done during initial page rendering and mostly done asynchronously once the page is already viewable to the user. We actively strived to achieve both of these goals.
-\fi

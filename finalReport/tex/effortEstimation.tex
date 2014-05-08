@@ -1,0 +1,139 @@
+\chapter{Effort Estimation}
+\newcommand{\UCP}{\mathit{UCP}}
+\newcommand{\UUCP}{\mathit{UUCP}}
+\newcommand{\TCF}{\mathit{TCF}}
+\newcommand{\ECF}{\mathit{ECF}}
+\newcommand{\UAW}{\mathit{UAW}}
+\newcommand{\UUCW}{\mathit{UUCW}}
+\newcommand{\CF}{\mathit{CF}}
+\newcommand{\PF}{\mathit{PF}}
+
+The ``Use Case Points'' system of estimating the effort necessary 
+to create the system will be employed. This is motivated by
+a need to have a metric on the complexity of the design of
+the system in order to properly motivate resource allocation,
+with the acceptance that any created metric will be necessarily
+subjective and arbitrary.
+
+\section{Background}
+
+The estimation of effort is a factor representing the product of sums
+of various weighting factors. This can also be used to estimate the 
+number of man-hours which will be devoted to completing the project.
+The factor representing the total weighting factor is:
+
+\begin{equation}
+\UCP = \UUCP \times \TCF \times \ECF
+\end{equation}
+
+$\UUCP = \UAW + \UUCW$ represents the Unadjusted Use Case Weight as a
+sum of Unadjusted Actor Weight, the weighted complexity of actor
+involvement, and Unadjusted Use Case Weight, the weighted complexity
+of the various use cases of the system. 
+
+There are two complexity factors: technical, and environmental.
+\begin{equation}
+\CF = C_1+C_2\sum_{i=1}^{13}W_iF_i
+\end{equation}
+
+$\TCF$, the Technical Complexity Factor, is a heuristic index
+representing the challenges posed in implementing nonfunctional
+requirements of a system and is
+specified by interviews with experienced developers. $C_1 = .6$, 
+$C_2 = .01$, $W_i \in \{.5, 1, 2\} $, and $F_i \in [0,5]$. $ECF$,
+the Environmental Complexity Factor, is another heuristic index
+representing miscellaneus factors including experience and stafffing.
+$C_1 = 1.4$, $C_2 = -0.03$, $W_i \in \{-1,.5,1,1.5,2\}$, and 
+$F_i \in [0,5]$. 
+
+The $\UCP$ can be interpreted as weighted count of
+the various requirements and specifications needed to implement a 
+system. Therefore, the duration of a project can be estimated by
+multiplying the $\UCP$ by a productivity factor $\PF$ representing
+the average development man-hour needed per use case point.
+\newpage
+\section{Unadjusted Use Case Points}
+
+\renewcommand\arraystretch{2}
+\begin{longtable}{|p{1in}|p{3.9in}|p{0.8in}|p{.5in}|}
+\hline
+{\large \color{color1}Actor}&{\large \color{color1}Description}&{\large \color{color1}Complexity}&{\large \color{color1}Weight} \\ \hline
+Investor&A normal user is interacting with the site through a graphical user interface.&Complex &3 pts \\ \hline 
+League Manager&League Manager requires a graphical user interface.&Complex &3 pts \\ \hline 
+Site Administrator&Admin requires private GUI as well.&Complex &3 pts \\ \hline 
+Database&System interacts with database layer through a predefined framework.&Average &2 pts \\ \hline 
+Web Browser&Browser interfaces with application through RESTful API over HTTP to navigate and submit forms.&Simple &1 pt \\ \hline 
+Finance Adaptor&System interacts with Yahoo! Finance through its web API.&Simple &1 pt \\ \hline 
+\end{longtable}
+
+\renewcommand\arraystretch{2}
+\begin{longtable}{|p{1in}|p{3.9in}|p{0.8in}|p{.5in}|}
+\hline
+{\large \color{color1}Use Case}&{\large \color{color1}Description}&{\large \color{color1}Complexity}&{\large \color{color1}Weight} \\ \hline
+Register&Simple user interface, 4 steps for main success scenario. 2 participating actors (Database, Manager).&Average &10 pts \\ \hline
+Join League&Average user interface, 5 steps for main success scenario. 2 participating actor (Database, Investors).&Average &10 pts \\ \hline
+view Data&Simple user interface, 6 steps for main success scenario, 2 participating actors (Database, Yahoo Finance).&Complex &10 pts \\ \hline
+Manage Portfolio&Simple user interface, 6 main steps for main success scenario. 2 participating actors (Database, Finance).&Complex &15 pts \\ \hline
+Place Order&Complex user interface, 5 steps for main success scenario. 2 participating actors (Database, Investors)&Complex &15 pts \\ \hline 
+Admin Actions&Average user interface, 2 steps for main success scenario. 2 participating actors (Database, Site Admin). &Simple &5 pts \\ \hline 
+Manage League& Average user interface, 3 main steps for success scenario. 2 participating actors (Database, League Manager). &Complex&15 pts\\ \hline
+\end{longtable}
+
+\section{Technical Complexity Factors}
+
+\renewcommand\arraystretch{2}
+\begin{longtable}{|p{1.2in}|p{3.6in}|p{0.5in}|p{.7in}|}
+\hline
+{\large \color{color1}Technical Factor}&{\large \color{color1}Description}&{\large \color{color1}Weight}&{\large \color{color1}Perceived Complexity} \\ \hline
+Distributed System & System is distributed between end users having
+access through web and main server(s) & 2 & 3 \\ \hline
+System Performance & Users expect good performance but nothing
+exceptional & 1 & 3 \\ \hline
+User Efficiency & End users expect efficiency but there are no
+exceptional demands & 1 & 3 \\ \hline
+Complex Internal Processing & System needs to track performance of
+various user instances both day-to-day and over extended intervals
+& 1 & 4  \\ \hline
+Reusability & No requirements for system to be reusable & 1 & 0 \\ \hline
+Ease of Installation & Ease of installation is low because only one host machine is used in implementation & .5 & 2 \\ \hline
+Ease of Use & Ease of use for users is imperative & .5 & 5 \\ \hline
+Portability & Portability is only high enough to allow for ease of development on various platforms & 2 & 2 \\ \hline
+Ease of Change & System will only change marginally, so ease of change is low priority & 1 & 1 \\ \hline
+Concurrent Use & Concurrence is an issue because users have access to
+activity, and history feeds, and system needs to poll finance
+data in approximately real-time & 1 & 4 \\ \hline
+Security & Security of users is important but Herculean measures are not necessary  & 1 & 3 \\ \hline
+Third Party Access & Because of RESTful interface, third party support is possible but not currently supported & 1 & 2 \\ \hline
+Training Requirements & System is relatively easy to use, but basic
+tutorials are offered to users & 1 & 1 \\ \hline
+\end{longtable}
+
+\section{Environmental Complexity Factors}
+
+\renewcommand\arraystretch{2}
+\begin{longtable}{|p{1.2in}|p{3.6in}|p{0.5in}|p{.7in}|}
+\hline
+{\large \color{color1}Environmental Factor}&{\large \color{color1}Description}&{\large \color{color1}Weight}&{\large \color{color1}Perceived Impact} \\ \hline
+Development Experience & Beginners with UML-based development and the Construction process & 1.5 & 1.5 \\ \hline
+Application Experience & Complete novices to the field of finance & .5 & 0 \\ \hline
+Paradigm Experience & Beginners to the use of databases and web
+frameworks & 1 & 1.5 \\ \hline
+Lead Capabilities & Leads have no prior leadership experience
+& .5 & 0 \\ \hline
+Motivation & Motivation is high but fluctuates over semester & 1 & 3 \\ \hline
+Stable Requirements & Requirements are well-known but only approximate & 2 & 3 \\ \hline
+Part Time & All developers are working with very few hours a week & -1 & 5 \\ \hline
+Language & Developers are using a collection of modern languages, some familiar, some not & -1 & 2 \\ \hline
+\end{longtable}
+
+\section{Calculations}
+
+$$ \UUCP = 3\times 3 + 2\times 2 + 1\times 2 + 10 \times 3 + 15 \times 3 + 5 = 95 $$
+
+$$ \TCF = .6 + .01 \times (34.5) = .945 $$
+
+$$ \ECF = 1.4 -0.03 \times (5.75) = 1.23 $$
+
+$$ \UCP = 95 \times .945 \times 1.23 = 110.4 $$
+
+$$ \mbox{Duration} = \UCP \times \PF = 110.4 \times 28 = 3091 $$

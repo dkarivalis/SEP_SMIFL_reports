@@ -40,7 +40,7 @@ guest into investor mode and therefore displaying them the Player Profile View.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.5in]{./img/inter/uc1.jpg}
+\includegraphics[width=5.5in]{./img/inter/UC1.png}
 \caption{UC-1}
 \end{figure}
 
@@ -58,7 +58,7 @@ into the list in the database to associate with this league.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.5in]{./img/inter/uc2.jpg}
+\includegraphics[width=5.5in]{./img/inter/UC2.png}
 \caption{UC-2}
 \end{figure}
 
@@ -75,7 +75,7 @@ and then continue to show the Market Data View.\\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.5in]{./img/inter/uc3.jpg}
+\includegraphics[width=5.5in]{./img/inter/UC3.png}
 \caption{UC-3}
 \end{figure}
 
@@ -87,7 +87,7 @@ investor can also update their view of the portfolio and other settings.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.5in]{./img/inter/uc4.jpg}
+\includegraphics[width=5.5in]{./img/inter/UC4.png}
 \caption{UC-4}
 \end{figure}
 
@@ -103,7 +103,21 @@ module and the changes will be displayed in the investor’s portfolio.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5.5in]{./img/inter/uc5.jpg}
+\includegraphics[width=5.5in]{./img/inter/UC5.png}
+\caption{UC-5}
+\end{figure}
+
+\subsection{Pub/Sub for Achievements}
+We decided to us a Publisher/Subscribe pattern to handle achievements on the
+server, and use that to update the user interface and database.  This will
+allow us to handle all the achievement handling in one location, instead of
+spreading the logic throughout the code.  This will greatly ease our ability
+to introduce additional achievements as the application matures, as well as
+easily fix bugs in our achievement handling system.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5.5in]{./img/inter/PubSub.png}
 \caption{UC-5}
 \end{figure}
 
@@ -140,3 +154,65 @@ our alternative solutions for historical reference.\\
 \includegraphics[width=5.5in]{./img/inter/alt5.png}
 \caption{UC-5 alternate solution considered}
 \end{figure}
+
+\section{Design Patterns}
+
+\section{Design Patterns}
+Various standard and non-standard design patterns were utilized to provide
+functionality for things such as authentication, efficient page rendering and
+object modeling.
+
+\subsection{Model-View-Controller}
+The Model-View-Controller (MVC) pattern was heavily used throughout the system
+to properly organize model logic, business logic and presentation logic. This
+very intuitive pattern allowed the team to easily delegate work on different
+levels of the system. Frequently, a selection of team members would develop
+front-end functionality which required only the views to be altered, while other
+members implemented backend functionality which was done either in controllers
+or models. This pattern resulted in a more efficient development lifecycle
+overall, while also providing some performance gains. Namely, the MVC pattern
+calls on resources only when they are actually needed which prevents unnecessary
+overhead. For example, methods developed to be called only programmatically
+don't attempt to display a view which results in faster responses.
+\subsection{Publisher Subscribe}
+The Publisher/Subscribe pattern allows us to easily decouple our handling of
+business logic from that of our game logic, most notably, our achievements
+system. This allows us to easily change business logic without having to read
+through code dedicated to achievement handling. More importantly, it allows us
+to be able to easily add, update, and delete achievement handling code within the
+confines of a single class. We also believe that we can use the
+Publish/Subscribe model in the future to extend functionality to limit and stop
+orders, allowing actors to be updated once an order has been completed.
+\subsection{Object Relational Model Pattern}
+The Object Relational Model (ORM) pattern, an intelligent implementation of a
+database access design pattern, was used exclusively to interact with
+persistent storage technologies used in the system. This pattern offered the
+major advantage of not needing to hard code any database-specific queries. All
+requests made through the ORM are translated to the currently used DB system's
+language and data is returned in directly its object form. The lack of need to
+write direct queries also lead to a great side effect, namely database
+agnosticism which allowed various database implementations to be tested during
+different stages of development. During development SQLite was used for its
+lightweight footprint on the developers machine, then for production MySQL was
+used as it is considerably more efficient when dealing with larger amounts of
+data. This design certainly improved our development by saving countless hours
+of development time.
+\subsection{RESTful Design}
+The RESTful design pattern being used more and more now on the web allowed us to
+implement our asynchronous order processing system. The RESTful design of some
+internal functionality allowed it to be accessed programmatically and securely
+through a simple API. As RESTful services are at the heart of the Play
+Framework, it did not require a lot of effort to expose some internal
+functionality without creating major security holes. Future iterations will
+continue to rely on the stateful communication that our RESTful API offers.
+\subsection{Responsive UI Pattern}
+The Bootstrap UI framework implemented a design pattern completely segregating
+visual presentation from content and user experience. This provided a beautiful
+responsive design which adapted to different client devices ranging from
+desktops to smart devices. The pattern takes advantage of the flexible markup of
+HTML5 to customize it on the fly when the page is rendering in the browser using
+Javascript and CSS. This allowed our team to target the rapidly growing mobile
+users without much extra implementation effort. It also inherently produced a
+faster user experience since minimal processing is done during initial page
+rendering and mostly done asynchronously once the page is already viewable to
+the user. We actively strived to achieve both of these goals.
